@@ -168,7 +168,8 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Account Created</div>
                                         <div class="col-lg-9 col-md-8">
-                                            {{ Auth::check() ? Auth::user()->created_at->format('F j, Y, h:i A') : 'N/A' }}
+                                            {{ Auth::check() && Auth::user()->created_at ? Auth::user()->created_at->format('F j, Y, h:i A') : 'N/A' }}
+
                                         </div>
 
                                     </div>
