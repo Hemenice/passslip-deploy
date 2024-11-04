@@ -50,7 +50,9 @@ class AdminRequestPassSlipController extends Controller
 
         // Generate the barcode using the control number
         $generator = new BarcodeGeneratorPNG();
-        $barcodeData = $generator->getBarcode($slip->control_number, $generator::TYPE_CODE_128);
+        // Assuming you have a different library that supports SVG output
+        $barcodeData = $generator->getBarcode($slip->control_number, $generator::TYPE_CODE_128, null, null, 'svg');
+
 
         // Define the barcode image file name and path
         $barcodeFileName = 'barcode_' . $slip->control_number . '.png';
