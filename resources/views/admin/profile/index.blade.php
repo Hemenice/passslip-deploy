@@ -165,7 +165,7 @@
                                             {{ Auth::check() ? Auth::user()->email : 'email@gmail.com' }}</div>
                                     </div>
 
-                                    <div class="row">
+                                    {{-- <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Account Created</div>
                                         <div class="col-lg-9 col-md-8">
                                             value="{{ Auth::check() ? (Auth::user()->designation === 'Admin' ? 'null' : (Auth::user()->created_at ? Auth::user()->created_at->format('F j, Y, h:i A') : 'Unavailable')) : 'Unavailable' }}"
@@ -173,7 +173,7 @@
 
                                         </div>
 
-                                    </div>
+                                    </div> --}}
 
 
 
