@@ -249,7 +249,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- Account Created Date -->
+                                        {{-- <!-- Account Created Date -->
                                         <div class="row mb-3">
                                             <label for="accountCreated"
                                                 class="col-md-4 col-lg-3 col-form-label">Account Created</label>
@@ -259,7 +259,7 @@
                                                     value="{{ Auth::check() ? Auth::user()->created_at->format('F j, Y, h:i A') : 'N/A' }}"
                                                     readonly>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <!-- Submit Button -->
                                         <div class="text-center">
