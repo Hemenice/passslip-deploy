@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Head;
-use Milon\Barcode\DNS1D;
-
 use App\Models\Slip;
 use App\Models\User;
 use App\Models\Purpose;
@@ -51,9 +49,9 @@ class AdminRequestPassSlipController extends Controller
         $slip->control_number = str_pad($slip->id, 8, '0', STR_PAD_LEFT);
 
         // Generate the barcode using the control number
-        $barcodeGenerator = new DNS1D();
+        $generator = new BarcodeGeneratorPNG();
         // $barcodeData = $generator->getBarcode($slip->control_number, $generator::TYPE_CODE_128);
-        $barcodeData = $barcodeGenerator->getBarcodePNG($slip->control_number, 'C128');
+        $barcodeData = $generator->getBarcode($slip->control_number, $generator::TYPE_CODE_128);
 
         // Define the barcode image file name and path
         $barcodeFileName = 'barcode_' . $slip->control_number . '.png';
@@ -61,7 +59,7 @@ class AdminRequestPassSlipController extends Controller
 
         // Save the barcode image to the public directory
         // Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
-        Storage::disk('public')->put('barcodes/' . $barcodeFileName, base64_decode($barcodeData));
+        Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
 
         // Save the barcode path or image name to the database
         $slip->barcode = $barcodeFileName; // Assuming you have a `barcode` column in the `slips` table

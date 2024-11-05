@@ -165,7 +165,7 @@ class GuestController extends Controller
         // $barcodeData = $generator->getBarcode($slip->control_number, $generator::TYPE_CODE_128);
 
         // Define the barcode image file name and path
-        $barcodeFileName = 'barcode_' . $slip->control_number . '.png';
+        // $barcodeFileName = 'barcode_' . $slip->control_number . '.png';
         $barcodePath = public_path('barcodes/' . $barcodeFileName);
 
         // Save the barcode image to the public directory
