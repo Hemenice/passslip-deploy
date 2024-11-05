@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Head;
+use Milon\Barcode\DNS1D;
 use App\Models\Slip;
 use App\Models\User;
 use App\Models\Purpose;
@@ -49,31 +50,26 @@ class AdminRequestPassSlipController extends Controller
         $slip->control_number = str_pad($slip->id, 8, '0', STR_PAD_LEFT);
 
         // Generate the barcode using the control number
-        $generator = new BarcodeGeneratorPNG();
-        // $barcodeData = $generator->getBarcode($slip->control_number, $generator::TYPE_CODE_128);
-        $barcodeData = $generator->getBarcode($slip->control_number, $generator::TYPE_CODE_128);
+        $barcodeGenerator = new DNS1D();
+        $barcodeData = $barcodeGenerator->getBarcodePNG($slip->control_number, 'C128');
 
+        // Define the barcode image file name and path
         // Define the barcode image file name and path
         $barcodeFileName = 'barcode_' . $slip->control_number . '.png';
         $barcodePath = public_path('barcodes/' . $barcodeFileName);
 
         // Save the barcode image to the public directory
         // Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
-        Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
+        // / Save the barcode image to the public directory
+        Storage::disk('public')->put('barcodes/' . $barcodeFileName, base64_decode($barcodeData));
 
         // Save the barcode path or image name to the database
         $slip->barcode = $barcodeFileName; // Assuming you have a `barcode` column in the `slips` table
         $slip->status = 'pending';
         $slip->user_id = Auth::id();;
 
-        // // Notify the admin
-        // $admin = User::where('designation', 'Admin')->first();
-        // if ($admin) {
-        //     $userName = Auth::user()->name; // Get the logged-in user's name
-        //     // Pass $userName to the notification
-        //     $admin->notify(new PassSlipRequestNotification("{$userName} has requested a pass slip."));
-        // }
-        // Notify the admin
+
+
         // Notify the selected Head of Office
         $headOfOffice = User::find($fields['head_office']);
         if ($headOfOffice) {
