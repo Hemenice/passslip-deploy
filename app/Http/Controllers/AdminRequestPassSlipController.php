@@ -51,7 +51,7 @@ class AdminRequestPassSlipController extends Controller
         // Generate the barcode using the control number
         $generator = new BarcodeGeneratorPNG();
         // $barcodeData = $generator->getBarcode($slip->control_number, $generator::TYPE_CODE_128);
-        // $barcodeData = $generator->getBarcode($slip->control_number, $generator::TYPE_CODE_128);
+        $barcodeData = $generator->getBarcode($slip->control_number, $generator::TYPE_CODE_128);
 
         // Define the barcode image file name and path
         $barcodeFileName = 'barcode_' . $slip->control_number . '.png';
@@ -59,7 +59,7 @@ class AdminRequestPassSlipController extends Controller
 
         // Save the barcode image to the public directory
         // Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
-        // Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
+        Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
 
         // Save the barcode path or image name to the database
         $slip->barcode = $barcodeFileName; // Assuming you have a `barcode` column in the `slips` table
