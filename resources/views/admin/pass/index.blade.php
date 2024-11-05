@@ -296,8 +296,13 @@
                                                             method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                            {{-- <button type="submit" class="btn btn-danger btn-sm"
                                                                 onclick="return confirm('Are you sure you want to delete this pass slip?');">
+                                                                Delete
+                                                            </button> --}}
+                                                            {{-- no security warning --}}
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="if (window.location.protocol !== 'https:') { alert('Please use a secure connection (HTTPS) to submit the form.'); return false; } else { return confirm('Are you sure you want to delete this pass slip?'); }">
                                                                 Delete
                                                             </button>
                                                         </form>
