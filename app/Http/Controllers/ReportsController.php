@@ -28,7 +28,7 @@ class ReportsController extends Controller
         $totalUsers = User::count();
         $totalAdmin = User::where('designation', 'Admin')->count();
         // Query to get the count of slips by month
-        $data = Slip::selectRaw("strftime('%m', created_at) as month, COUNT(*) as count")
+        $data = Slip::selectRaw("DATE_FORMAT(created_at, '%m') as month, COUNT(*) as count")
             ->groupBy('month')
             ->orderByRaw("MIN(created_at)")
             ->pluck('count', 'month');

@@ -187,9 +187,9 @@ class GuestController extends Controller
         // Prepare the SMS message template
 
         // send sms
-        $message = "{$user->name} has requested a pass slip. Please visit the website to approve";
-        $headOfOfficePhoneNumber = "+639317317321";
-        $this->sendSmsNotification($headOfOfficePhoneNumber, $message);
+        // $message = "{$user->name} has requested a pass slip. Please visit the website to approve";
+        // $headOfOfficePhoneNumber = "+639317317321";
+        // $this->sendSmsNotification($headOfOfficePhoneNumber, $message);
 
         return redirect('/guestpass')->with('success', 'Pass Slip Created Successfully');
     }
