@@ -61,7 +61,8 @@ class AdminRequestPassSlipController extends Controller
         // Save the barcode image to the public directory
         // Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
         // / Save the barcode image to the public directory
-        Storage::disk('public')->put('barcodes/' . $barcodeFileName, base64_decode($barcodeData));
+        Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
+
 
         // Save the barcode path or image name to the database
         $slip->barcode = $barcodeFileName; // Assuming you have a `barcode` column in the `slips` table
