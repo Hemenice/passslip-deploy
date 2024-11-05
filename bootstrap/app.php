@@ -13,12 +13,13 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'verify' => \App\Http\Middleware\CheckVerified::class,
-            'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+            // 'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
             'auth.guest' => \App\Http\Middleware\EnsureUserIsAuthenticated::class,
             'checkBanned' => \App\Http\Middleware\CheckBanned::class,
             'updatelastseen' => \App\Http\Middleware\UpdateLastSeen::class,
+
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
