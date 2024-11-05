@@ -252,7 +252,7 @@
                                                                         <!-- Display Barcode if approved and exists -->
                                                                         @if ($slip->status === 'approved' && $slip->barcode)
                                                                             <p><strong>Barcode:</strong></p>
-                                                                            <img src="{{ asset('storage/barcodes/' . $slip->barcode) }}"
+                                                                            <img src="{{ asset('/workspace/storage/barcodes/' . $slip->barcode) }}"
                                                                                 alt="Barcode for {{ $slip->control_number }}"
                                                                                 style="width:250px;" />
                                                                         @else
@@ -302,13 +302,13 @@
                                                             </button> --}}
                                                             {{-- no security warning --}}
                                                             <button type="submit" class="btn btn-danger btn-sm">
-                                                                Deletes
+                                                                Delete
                                                             </button>
                                                         </form>
 
                                                         <!-- Print Option -->
-                                                        <a href="#" class="btn btn-secondary btn-sm"
-                                                            target="_blank">Print</a>
+                                                        {{-- <a href="#" class="btn btn-secondary btn-sm"
+                                                            target="_blank">Print</a> --}}
 
 
                                                     </td>
