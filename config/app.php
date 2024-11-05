@@ -124,9 +124,6 @@ return [
     ],
 
 
-    'providers' => [
-        // ...
-        Milon\Barcode\BarcodeServiceProvider::class,
-    ]
+  
 
 ];
