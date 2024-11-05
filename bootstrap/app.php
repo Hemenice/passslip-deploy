@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'verify' => \App\Http\Middleware\CheckVerified::class,
             // 'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
-            'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+            // 'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
             'auth.guest' => \App\Http\Middleware\EnsureUserIsAuthenticated::class,
             'checkBanned' => \App\Http\Middleware\CheckBanned::class,
