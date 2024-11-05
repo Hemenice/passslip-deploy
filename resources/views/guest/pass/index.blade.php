@@ -103,7 +103,7 @@
                                                     </td>
                                                     <td>
                                                         @if ($item->status === 'approved' && $item->barcode)
-                                                            <img src="{{ asset('storage/barcodes/' . $item->barcode) }}"
+                                                            <img src="{{ asset('/public/storage/barcodes/' . $item->barcode) }}"
                                                                 alt="Barcode for {{ $item->control_number }}"
                                                                 style="width:100px;" />
                                                         @else
