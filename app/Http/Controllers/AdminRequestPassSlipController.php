@@ -47,6 +47,7 @@ class AdminRequestPassSlipController extends Controller
         $slip = Slip::create($fields);
 
         // Generate the control number (e.g., 0001, 0002, etc.)
+        // Set the control number with leading zeroes based on the slip ID
         $slip->control_number = str_pad($slip->id, 8, '0', STR_PAD_LEFT);
 
         // Generate the barcode using the control number
@@ -54,14 +55,11 @@ class AdminRequestPassSlipController extends Controller
         $barcodeData = $barcodeGenerator->getBarcodePNG($slip->control_number, 'C128');
 
         // Define the barcode image file name and path
-        // Define the barcode image file name and path
         $barcodeFileName = 'barcode_' . $slip->control_number . '.png';
-        $barcodePath = public_path('barcodes/' . $barcodeFileName);
+        $barcodePath = 'barcodes/' . $barcodeFileName;
 
-        // Save the barcode image to the public directory
-        // Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
-        // / Save the barcode image to the public directory
-        Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
+        // Save the barcode image to the public directory as a PNG file
+        Storage::disk('public')->put($barcodePath, base64_decode($barcodeData));
 
 
         // Save the barcode path or image name to the database

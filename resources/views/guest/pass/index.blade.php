@@ -265,6 +265,7 @@
                                                                 <span>UNAVAILABLE</span>
                                                             @endif
                                                         </td>
+
                                                         <td>
                                                             @if ($item->status === 'pending')
                                                                 <span class="badge bg-warning text-dark">Pending</span>

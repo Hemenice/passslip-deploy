@@ -102,6 +102,9 @@ class GuestController extends Controller
         return view('guest.pass.index', compact('slip', 'totalPassSlips', 'headOfficeSlips'));
     }
 
+    use Milon\Barcode\DNS1D;
+    use Illuminate\Support\Facades\Storage;
+    use Illuminate\Support\Facades\Auth;
 
     public function guestrequeststore(Request $request)
     {
@@ -123,12 +126,8 @@ class GuestController extends Controller
         $fields['approved_by'] = $fields['head_office'];
 
         // Find the selected Head of Office
-
-        // Find the selected Head of Office by ID
         $headOfOffice = User::find($fields['head_office']);
-        if (
-            !$headOfOffice || $headOfOffice->designation !== 'Head of Office'
-        ) {
+        if (!$headOfOffice || $headOfOffice->designation !== 'Head of Office') {
             return response()->json(['error' => 'Head of Office not found'], 404);
         }
 
@@ -139,8 +138,6 @@ class GuestController extends Controller
         if ($admin) {
             $admin->notify(new PassSlipRequestNotification("{$userName} has requested a pass slip"));
         }
-
-
 
         // Notify the selected Head of Office via application notification
         $headOfOffice->notify(new PassSlipRequestNotification("{$userName} has requested a pass slip."));
@@ -157,8 +154,7 @@ class GuestController extends Controller
 
         // Create the pass slip
         $slip = Slip::create($fields);
-
-        // Generate the control number (e.g., 0001, 0002, etc.)
+        // Generate the control number (e.g., 00000001, 00000002, etc.)
         $slip->control_number = str_pad($slip->id, 8, '0', STR_PAD_LEFT);
 
         // Generate the barcode using the control number
@@ -166,37 +162,26 @@ class GuestController extends Controller
         $barcodeData = $barcodeGenerator->getBarcodePNG($slip->control_number, 'C128');
 
         // Define the barcode image file name and path
-        // Define the barcode image file name and path
         $barcodeFileName = 'barcode_' . $slip->control_number . '.png';
-        $barcodePath = public_path('barcodes/' . $barcodeFileName);
+        // Save the barcode image in storage/app/public/barcodes
+        $barcodePath = 'barcodes/' . $barcodeFileName;
 
-        // Save the barcode image to the public directory
-        // Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
-        // / Save the barcode image to the public directory
-        Storage::disk('public')->put('barcodes/' . $barcodeFileName, base64_decode($barcodeData));
+        // Save the barcode image to the public storage directory
+        Storage::disk('public')->put($barcodePath, base64_decode($barcodeData));
 
-        // Save the barcode path or image name to the database
-        $slip->barcode = $barcodeFileName; // Assuming you have a `barcode` column in the `slips` table
+        // Save the barcode filename to the database (not the full path)
+        $slip->barcode = $barcodeFileName; // Store only the filename
         $slip->status = 'pending';  // Set initial status to pending
 
-        // Send notification
-
-        $user = Auth::user();
-
-
-        // Notification::send($user, new EmailNotificationPassSlip($user));
-
-
+        // Save the slip record
         $slip->save();
-        // Prepare the SMS message template
 
-        // send sms
-        // $message = "{$user->name} has requested a pass slip. Please visit the website to approve";
-        // $headOfOfficePhoneNumber = "+639317317321";
-        // $this->sendSmsNotification($headOfOfficePhoneNumber, $message);
+        // Send notification if needed
+        $user = Auth::user();
 
         return redirect('/guestpass')->with('success', 'Pass Slip Created Successfully');
     }
+
 
 
     private function sendSmsNotification($to, $message)
