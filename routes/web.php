@@ -1,8 +1,7 @@
 <?php
 
 
-use App\Models\Slip;
-use App\Models\Barcode;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\HeadController;
@@ -26,8 +25,6 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\AdminPasswordController;
 use App\Http\Controllers\GuestPasswordController;
-use App\Http\Controllers\HeadDashboardController;
-use App\Http\Controllers\BarcodeScannerController;
 use App\Http\Controllers\AdminPassSlipSlipController;
 use App\Http\Controllers\AdminRequestPassSlipController;
 

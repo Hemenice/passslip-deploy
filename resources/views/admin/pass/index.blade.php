@@ -1,69 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<x-admin.head />
 
-    <title>Pass Slip</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Updated: Apr 20 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
 
 <body>
 
     <!-- ======= Header ======= -->
     <x-admin.header />
     <!-- End Header -->
-    <!-- ======= Sidebar ======= -->
-    <!-- ======= Sidebar ======= -->
-    <!-- ======= Sidebar ======= -->
-    <!-- ======= Sidebar ======= -->
-    <!-- ======= Sidebar ======= -->
-    <!-- ======= Sidebar ======= -->
+
     <x-admin.sidebar />
     <!-- End Sidebar-->
-
-    <!-- End Sidebar-->
-
-    <!-- End Sidebar-->
-
-    <!-- End Sidebar-->
-
-    <!-- End Sidebar-->
-
-    <!-- End Sidebar-->
-
 
 
 
@@ -262,8 +210,7 @@
                                                                         </p>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button"
-                                                                            class="btn btn-secondary"
+                                                                        <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Close</button>
 
                                                                         <!-- Print button -->
@@ -275,8 +222,7 @@
                                                                                 class="btn btn-warning btn-sm">Edit</button>
                                                                         @endif
                                                                         @if ($slip->status == 'approved')
-                                                                            <a href=""
-                                                                                class="btn btn-secondary "
+                                                                            <a href="" class="btn btn-secondary "
                                                                                 target="_blank">Print</a>
                                                                         @endif
                                                                     </div>

@@ -1,16 +1,3 @@
-{{-- <h1>Scan Barcode</h1>
-<form id="barcodeForm">
-    <input type="text" id="barcodeInput" placeholder="Scan barcode here" autofocus>
-</form>
-
-<h2>Scanned Barcodes:</h2>
-<ul id="scannedBarcodesList">
-    @foreach ($scannedBarcodes as $barcode)
-        <li>{{ $barcode->code }}</li>
-    @endforeach
-</ul>
-
- --}}
 
 
 <!DOCTYPE html>
