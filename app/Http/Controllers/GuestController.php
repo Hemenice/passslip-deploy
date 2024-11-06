@@ -165,8 +165,9 @@ class GuestController extends Controller
             ->type(Type::TYPE_CODE_128)
             ->generate($slip->control_number);
 
-        $barcodeFileName = 'barcode_' . $slip->control_number . '.svg';
-        Storage::disk('public')->put('barcodes/' . $barcodeFileName, $barcodeData);
+
+        $barcodeFileName = "barcode_{$slip->control_number}.svg";
+        Storage::disk('public')->put("barcodes/{$barcodeFileName}", $barcodeData);
 
         // Save the barcode filename to the database (not the full path)
         $slip->barcode = $barcodeFileName; // Store only the filename
