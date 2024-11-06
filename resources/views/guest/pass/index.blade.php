@@ -7,7 +7,7 @@
 <body>
 
     <!-- ======= Header ======= -->
-    {{-- <x-guest.header /> --}}
+    <x-guest.header />
     <!-- End Header -->
 
     {{-- sidebar --}}
