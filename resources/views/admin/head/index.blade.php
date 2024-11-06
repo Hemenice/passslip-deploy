@@ -127,7 +127,7 @@
                                                         <th scope="row"><a href="#">{{ $head->id }}</a>
                                                         </th>
                                                         <td>{{ $head->name ?? 'Default Name' }}</td>
-                                                        <td>{{ $head->verification_code ?? 'Default Name' }}</td>
+                                                        <td>{{ $head->verification_code ?? 'Admin Created' }}</td>
                                                         <td>{{ $head->designation ?? 'NA' }}</td>
 
                                                         {{-- <td>{{ $head->email ?? 'default@example.com' }}</td> --}}

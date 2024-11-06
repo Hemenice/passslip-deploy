@@ -242,7 +242,7 @@
                                                     <td>
 
                                                         <span class="badge bg-primary"><i class="bi bi-star me-1"></i>
-                                                            {{ $barcode->slip->approver->name ?? 'N/A' }}</span>
+                                                            {{ $barcode->slip->approver->name ?? 'Admin' }}</span>
 
 
                                                     </td>
