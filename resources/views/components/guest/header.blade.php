@@ -2,7 +2,7 @@
 
      <div class="d-flex align-items-center justify-content-between">
          <a href="/" class="logo d-flex align-items-center">
-             <img src="assets/img/logo.png" alt="">
+             <img src="assets/img/epasslogo.png" alt="">
              <span class="d-none d-lg-block">E-Pass Slip RS</span>
          </a>
          <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -69,7 +69,7 @@
 
                  <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                      data-bs-toggle="dropdown">
-                     <img src="{{ Auth::check() && Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('assets/img/default-avatar.jpg') }}"
+                     <img src="{{ Auth::check() && Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('assets/img/defaultprofile.jpg') }}"
                          alt="Profile" class="rounded-circle">
                      <span class="d-none d-md-block dropdown-toggle ps-2">
                          {{ Auth::check() ? Auth::user()->name : 'Guest' }}
