@@ -57,7 +57,7 @@ class BarcodeController extends Controller
 
         if ($barcode) {
             // If actual_time_departure has already been set, prevent creating a duplicate entry
-            return redirect()->route('barcode.scan')->with('error', 'Departure time for this barcode has already been recorded.');
+            return redirect()->route('barcode.scan')->with('success', 'Departure time for' . $code . ' has already been recorded.');
         }
 
         // Create a new record with actual_time_departure set
