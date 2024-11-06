@@ -78,7 +78,7 @@ class AdminPassSlipSlipController extends Controller
         $slip->delete();
 
         // Redirect back with a success message
-        return redirect('/viewpass')->with('success', 'Pass Slip Deleted Successfully');
+        return back()->with('success', 'Pass Slip Deleted Successfully');
     }
 
 
@@ -90,7 +90,7 @@ class AdminPassSlipSlipController extends Controller
         $passSlip->status = 'approved';  // Update the status to 'approved'
         $passSlip->save(); // Save the changes
 
-      
+
 
         return redirect()->back()->with('success', 'Pass slip has been approved.');
     }
