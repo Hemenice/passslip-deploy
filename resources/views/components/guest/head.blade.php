@@ -7,8 +7,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="../assets/img/epasslogo.png" rel="icon">
-    <link href="../assets/img/epasslogo.png" rel="apple-touch-icon">
+
     <link rel="icon" href="../assets/img/epasslogo.png">
 
     <!-- Google Fonts -->
