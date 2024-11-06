@@ -154,7 +154,7 @@
                                             <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
                                                 Image</label>
                                             <div class="col-md-8 col-lg-9">
-                                                <img src="{{ Auth::check() && Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('assets/img/default-avatar.jpg') }}"
+                                                <img src="{{ Auth::check() && Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('assets/img/defaultprofilepic.png') }}"
                                                     alt="Profile" class="rounded-circle">
                                                 <div class="pt-2">
                                                     <input type="file" name="avatar" class="form-control">
