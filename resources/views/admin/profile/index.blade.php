@@ -56,7 +56,7 @@
                     <div class="card">
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                            <img src="{{ Auth::check() && Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('assets/img/defaultprofilepic.jpg') }}"
+                            <img src="{{ Auth::check() && Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('assets/img/defaultprofilepic.png') }}"
                                 alt="Profile" class="rounded-circle">
                             <h2> {{ Auth::check() ? Auth::user()->name : 'Guest' }}</h2>
                             <h3>{{ Auth::user()->designation ?? 'Faculty' }}</h3>
