@@ -102,13 +102,15 @@
                                                     <td>{{ $item->created_at ? $item->created_at->format('F j, Y, h:i A') : 'N/A' }}
                                                     </td>
                                                     <td>
-                                                        @if ($item->status === 'approved' && $item->barcode)
-                                                            <img src="{{ '/workspace/public/storage/barcodes/' . $item->barcode }}"
-                                                                alt="Barcode for {{ $item->control_number }}"
+
+                                                        @if ($slip->status === 'approved' && $slip->barcode)
+                                                            <img src="{{ asset('storage/barcodes/' . $slip->barcode) }}"
+
                                                                 style="width:100px;" />
                                                         @else
-                                                            <span>UNAVAILABLE</span>
+                                                            N/A
                                                         @endif
+
                                                     </td>
                                                     <td>
                                                         @if ($item->status === 'pending')

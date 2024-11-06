@@ -141,7 +141,6 @@
                                                     <td>
                                                         @if ($slip->status === 'approved' && $slip->barcode)
                                                             <img src="{{ asset('storage/barcodes/' . $slip->barcode) }}"
-                                                                alt="Barcode for {{ $slip->control_number }}"
                                                                 style="width:100px;" />
                                                         @else
                                                             N/A
