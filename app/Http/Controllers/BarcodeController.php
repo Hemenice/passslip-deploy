@@ -54,7 +54,7 @@ class BarcodeController extends Controller
         $slip = Slip::where('control_number', $code)->first();
 
         if (!$slip) {
-            return redirect()->route('barcode.scan')->with('error', 'No slip found for' . $barcodeOwner->name . '!');
+            return redirect()->route('barcode.scan')->with('error', 'No slip found !');
         }
 
         // Check if a barcode entry with this code already exists
@@ -62,7 +62,7 @@ class BarcodeController extends Controller
 
         if ($barcode) {
             // If actual_time_departure has already been set, prevent creating a duplicate entry
-            return redirect()->route('barcode.scan')->with('success', 'Departure time for' . $barcodeOwner->name . ' has already been recorded.');
+            return redirect()->route('barcode.scan')->with('success', 'Departure time  has already been recorded.');
         }
 
         // Create a new record with actual_time_departure set
@@ -72,7 +72,7 @@ class BarcodeController extends Controller
             'actual_time_departure' => now()->format('H:i:s'), // Set actual departure time
         ]);
 
-        return redirect()->route('barcode.scan')->with('success', 'Departure time for barcode ' . $barcodeOwner->name . ' recorded successfully.');
+        return redirect()->route('barcode.scan')->with('success', 'Departure time  recorded successfully.');
     }
     public function scanarrival(Request $request)
     {
@@ -105,7 +105,7 @@ class BarcodeController extends Controller
                 'actual_time_arrival' => now()->format('H:i:s'), // Set actual arrival time
             ]);
 
-            return redirect()->route('barcode.scan')->with('success', 'Arrival time for barcode ' . $code . ' recorded successfully.');
+            return redirect()->route('barcode.scan')->with('success', 'Arrival time for barcode   recorded successfully.');
         } else {
             // If no record exists, return an error message
             return redirect()->route('barcode.scan')->with('error', 'No departure record found for this barcode!');
