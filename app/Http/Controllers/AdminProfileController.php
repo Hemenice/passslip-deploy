@@ -17,7 +17,7 @@ class AdminProfileController extends Controller
         return view('admin.profile.index', compact('admin', 'departments'));
     }
 
-    // public function adminupdateprofile(Request $request, $id)
+
     // {
     //     // Validate the incoming request data
     //     $fields = $request->validate([

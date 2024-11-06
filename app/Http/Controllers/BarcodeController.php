@@ -3,11 +3,12 @@
 // app/Http/Controllers/BarcodeController.php
 namespace App\Http\Controllers;
 
-use App\Models\Barcode;
 use Carbon\Carbon;
 use App\Models\Slip;
+use App\Models\Barcode;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BarcodeController extends Controller
 {
@@ -37,6 +38,10 @@ class BarcodeController extends Controller
 
     public function scandeparture(Request $request)
     {
+        $userId = Auth::id();
+
+
+        $barcodeOwner = Slip::where('user_id', $userId)->get();
         // Get the scanned barcode
         $code = $request->input('code');
 
@@ -49,7 +54,7 @@ class BarcodeController extends Controller
         $slip = Slip::where('control_number', $code)->first();
 
         if (!$slip) {
-            return redirect()->route('barcode.scan')->with('error', 'No slip found for this barcode!');
+            return redirect()->route('barcode.scan')->with('error', 'No slip found for' . $barcodeOwner->name . '!');
         }
 
         // Check if a barcode entry with this code already exists
@@ -57,7 +62,7 @@ class BarcodeController extends Controller
 
         if ($barcode) {
             // If actual_time_departure has already been set, prevent creating a duplicate entry
-            return redirect()->route('barcode.scan')->with('success', 'Departure time for' . $code . ' has already been recorded.');
+            return redirect()->route('barcode.scan')->with('success', 'Departure time for' . $barcodeOwner->name . ' has already been recorded.');
         }
 
         // Create a new record with actual_time_departure set
@@ -67,7 +72,7 @@ class BarcodeController extends Controller
             'actual_time_departure' => now()->format('H:i:s'), // Set actual departure time
         ]);
 
-        return redirect()->route('barcode.scan')->with('success', 'Departure time for barcode ' . $code . ' recorded successfully.');
+        return redirect()->route('barcode.scan')->with('success', 'Departure time for barcode ' . $barcodeOwner->name . ' recorded successfully.');
     }
     public function scanarrival(Request $request)
     {
