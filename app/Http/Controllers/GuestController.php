@@ -87,8 +87,7 @@ class GuestController extends Controller
         $userDesignation = Auth::user()->designation;
 
         // Pass slips created by the logged-in user
-        // $slip = Slip::where('user_id', $userId)->get();
-        $slip = Slip::all();
+        $slip = Slip::where('user_id', $userId)->get();
 
         // Total pass slip count of the current logged user
         $totalPassSlips = $slip->count();
