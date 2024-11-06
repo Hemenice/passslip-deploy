@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Slip;
 use App\Models\User;
 use Twilio\Rest\Client;
@@ -102,9 +103,7 @@ class GuestController extends Controller
         return view('guest.pass.index', compact('slip', 'totalPassSlips', 'headOfficeSlips'));
     }
 
-    use Milon\Barcode\DNS1D;
-    use Illuminate\Support\Facades\Storage;
-    use Illuminate\Support\Facades\Auth;
+
 
     public function guestrequeststore(Request $request)
     {
