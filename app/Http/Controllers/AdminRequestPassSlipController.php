@@ -121,7 +121,7 @@ class AdminRequestPassSlipController extends Controller
             'date_departure' => 'required|date',
             'date_arrival' => 'required|date',
             'purpose' => 'required|string',
-            'status' => 'required|in:cancel,pending,approved,disapproved',  // Ensure only valid statuses
+            'status' => 'required',  // Ensure only valid statuses
             'reason' => 'required|string',
             'department' => 'required|string',
             'head_office' => 'required|string',

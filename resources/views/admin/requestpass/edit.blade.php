@@ -340,8 +340,6 @@
                                 <div class="col-sm-10">
                                     <select name="status" id="status" class="form-control" required>
                                         <option value="" disabled>Select Status</option>
-                                        <option value="cancel"
-                                            {{ $requestPass->status == 'cancel' ? 'selected' : '' }}>Cancel</option>
                                         <option value="pending"
                                             {{ $requestPass->status == 'pending' ? 'selected' : '' }}>Pending</option>
                                         <option value="approved"
@@ -419,20 +417,8 @@
 
     </main><!-- End #main -->
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>E-Pass Slip Recording System</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            <a href="">Romer Jasen Jimenez</a>
-        </div>
-    </footer><!-- End Footer -->
 
+    <x-guest.footer />
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
