@@ -9,7 +9,7 @@
     <!-- Favicons -->
     {{-- <link href="../assets/img/epasslogo.png" rel="icon">
     <link href="../assets/img/epasslogo.png" rel="apple-touch-icon"> --}}
-    <link rel="icon" href="../assets/img/epasslogo.png">
+    <link href="../assets/img/epasslogo.png" rel="icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
