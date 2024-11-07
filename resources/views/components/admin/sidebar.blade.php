@@ -186,14 +186,26 @@
 
 
 
-        <li class="nav-heading">Barcode</li>
+        <li class="nav-heading">Barcode List</li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="/barcodelist">
+                <i class="bi bi-upc"></i>
+                <span>Barcodes</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-heading">Barcode Scan</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/barcode-scan">
                 <i class="bi bi-upc-scan"></i>
                 <span>Barcodes</span>
             </a>
         </li><!-- End Profile Page Nav -->
+
+
+
         <li class="nav-heading">Reports</li>
 
         <li class="nav-item">
