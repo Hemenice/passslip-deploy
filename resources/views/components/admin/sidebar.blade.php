@@ -191,7 +191,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="/barcodelist">
                 <i class="bi bi-upc"></i>
-                <span>Barcodes</span>
+                <span>Barcode List</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
@@ -200,7 +200,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="/barcode-scan">
                 <i class="bi bi-upc-scan"></i>
-                <span>Barcodes</span>
+                <span>Barcode    Scan</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
