@@ -252,8 +252,8 @@
                                                         </form>
 
                                                         <!-- Print Option -->
-                                                        {{-- <a href="#" class="btn btn-secondary btn-sm"
-                                                            target="_blank">Print</a> --}}
+                                                        <a href="#" class="btn btn-secondary btn-sm"
+                                                            target="_blank">Print</a>
 
 
                                                     </td>
