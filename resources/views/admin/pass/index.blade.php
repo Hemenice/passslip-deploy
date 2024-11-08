@@ -170,6 +170,8 @@
                                                                         <!-- Display Pass Slip Details -->
                                                                         <p><strong>Name:</strong>
                                                                             {{ $slip->user->name }}</p>
+                                                                        <p><strong>Date Created | Requested:</strong>
+                                                                            {{ $slip->created_at }}</p>
                                                                         @if ($slip->status == 'approved')
                                                                             <p><strong>Control Number:</strong>
                                                                                 {{ $slip->control_number }}</p>

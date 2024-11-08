@@ -201,6 +201,9 @@
                                                                         <!-- Display Pass Slip Details -->
                                                                         <p><strong>Name:</strong>
                                                                             {{ $barcode->slip->user->name }}</p>
+                                                                        <p><strong>Date Created: </strong>
+                                                                            {{ $barcode->slip->created_at ? \Carbon\Carbon::parse($barcode->slip->created_at)->format('F j, Y, g:i A') : 'N/A' }}
+                                                                        </p>
 
                                                                         <p><strong>Control Number:</strong>
                                                                             {{ $barcode->slip->control_number }}</p>
@@ -212,7 +215,8 @@
                                                                         <p><strong>Approving Authority:</strong>
                                                                             {{ $barcode->slip->head_office }} or Admin
                                                                         </p>
-                                                                        <p><strong>Reason:</strong> {{ $barcode->slip->reason }}
+                                                                        <p><strong>Reason:</strong>
+                                                                            {{ $barcode->slip->reason }}
                                                                         </p>
                                                                         <p><strong>Time of Departure:</strong>
                                                                             {{ \Carbon\Carbon::parse($barcode->slip->time_departure)->format('h:i A') }}

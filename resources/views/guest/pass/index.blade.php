@@ -155,6 +155,8 @@
                                                                         <!-- Display Pass Slip Details -->
                                                                         <p><strong>Name:</strong>
                                                                             {{ $item->user->name }}</p>
+                                                                        <p><strong>Date Created:</strong>
+                                                                            {{ $item->created_at }}</p>
 
                                                                         <p><strong>Control Number:</strong>
                                                                             {{ $item->control_number }}</p>
