@@ -253,7 +253,7 @@
 
                                                         <!-- Print Option -->
                                                         <a href="#" class="btn btn-secondary btn-sm"
-                                                            target="_blank">Print</a>
+                                                            target="_blank">Prints</a>
 
 
                                                     </td>
