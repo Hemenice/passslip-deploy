@@ -156,7 +156,9 @@
                                                                         <p><strong>Name:</strong>
                                                                             {{ $item->user->name }}</p>
                                                                         <p><strong>Date Created:</strong>
-                                                                            {{ $item->created_at }}</p>
+                                                                        <p>{{ \Carbon\Carbon::parse($item->created_at)->format('F d, Y h:i A') }}
+                                                                        </p>
+                                                                        </p>
 
                                                                         <p><strong>Control Number:</strong>
                                                                             {{ $item->control_number }}</p>
