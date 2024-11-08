@@ -173,11 +173,15 @@ class GuestController extends Controller
         $slip->barcode = $barcodeFileName; // Store only the filename
         $slip->status = 'pending';  // Set initial status to pending
 
+        $user = Auth::user();
         // Save the slip record
         $slip->save();
 
         // Send notification if needed
-        $user = Auth::user();
+        // send sms
+        $message = "{$user->name} has requested a pass slip. Please visit the website to approve: https://oyster-app-x7aid.ondigitalocean.app/";
+        $headOfOfficePhoneNumber = "+639125981390";
+        $this->sendSmsNotification($headOfOfficePhoneNumber, $message);
 
         return redirect('/guestpass')->with('success', 'Pass Slip Created Successfully');
     }
