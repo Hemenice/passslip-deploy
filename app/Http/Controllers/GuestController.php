@@ -179,9 +179,9 @@ class GuestController extends Controller
 
         // Send notification if needed
         // send sms
-        $message = "{$user->name} has requested a pass slip. Please visit the website to approve: https://oyster-app-x7aid.ondigitalocean.app/";
-        $headOfOfficePhoneNumber = "+639125981390";
-        $this->sendSmsNotification($headOfOfficePhoneNumber, $message);
+        // $message = "{$user->name} has requested a pass slip. Please visit the website to approve: https://oyster-app-x7aid.ondigitalocean.app/";
+        // $headOfOfficePhoneNumber = "+639125981390";
+        // $this->sendSmsNotification($headOfOfficePhoneNumber, $message);
 
         return redirect('/guestpass')->with('success', 'Pass Slip Created Successfully');
     }
