@@ -168,6 +168,102 @@
 
                                                     <td>
 
+                                                        <button type="button" class="btn btn-info btn-sm"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#viewModal{{ $barcode->slip->id }}">
+                                                            View
+                                                        </button>
+                                                        <!-- Modal Structure -->
+                                                        <!-- "View" button that triggers the modal -->
+
+
+                                                        <!-- Modal Structure -->
+                                                        <!-- "View" button that triggers the modal -->
+
+
+                                                        <!-- Modal Structure -->
+                                                        <div class="modal fade" id="viewModal{{ $barcode->slip->id }}"
+                                                            tabindex="-1"
+                                                            aria-labelledby="viewModalLabel{{ $barcode->slip->id }}"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="viewModalLabel{{ $barcode->slip->id }}">
+                                                                            Pass
+                                                                            Slip Details</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <!-- Display Pass Slip Details -->
+                                                                        <p><strong>Name:</strong>
+                                                                            {{ $barcode->slip->user->name }}</p>
+
+                                                                        <p><strong>Control Number:</strong>
+                                                                            {{ $barcode->slip->control_number }}</p>
+
+
+
+                                                                        <p><strong>Purpose:</strong>
+                                                                            {{ $barcode->slip->purpose }}</p>
+                                                                        <p><strong>Approving Authority:</strong>
+                                                                            {{ $barcode->slip->head_office }} or Admin
+                                                                        </p>
+                                                                        <p><strong>Reason:</strong> {{ $barcode->slip->reason }}
+                                                                        </p>
+                                                                        <p><strong>Time of Departure:</strong>
+                                                                            {{ \Carbon\Carbon::parse($barcode->slip->time_departure)->format('h:i A') }}
+                                                                        </p>
+                                                                        <p><strong>Time of Arrival:</strong>
+                                                                            {{ \Carbon\Carbon::parse($barcode->slip->time_arrival)->format('h:i A') }}
+                                                                        </p>
+                                                                        <p><strong>Date of Departure:</strong>
+                                                                            {{ \Carbon\Carbon::parse($barcode->slip->date_departure)->format('F j, Y') }}
+                                                                        </p>
+                                                                        <p><strong>Date of Arrival:</strong>
+                                                                            {{ \Carbon\Carbon::parse($barcode->slip->date_arrival)->format('F j, Y') }}
+                                                                        </p>
+
+                                                                        <!-- Display Barcode if approved and exists -->
+                                                                        @if ($barcode->slip->status === 'approved' && $barcode->slip->barcode)
+                                                                            <p><strong>Barcode:</strong></p>
+                                                                            <img src="{{ asset('storage/barcodes/' . $barcode->slip->barcode) }}"
+                                                                                alt="Barcode for {{ $barcode->slip->control_number }}"
+                                                                                style="width:250px;" />
+                                                                        @else
+                                                                            <p><strong>Barcode:</strong> UNAVAILABLE</p>
+                                                                        @endif
+                                                                        <p><strong>Approved by:</strong>
+                                                                            {{ \App\Models\User::where('id', $barcode->slip->approved_by)->value('name') }}
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close</button>
+
+                                                                        <!-- Print button -->
+                                                                        {{-- @if ($slip->status !== 'approved')
+                                                                            <a href="{{ route('guest.guesteditsliprequest', $slip->id) }}"
+                                                                                class="btn btn-warning btn-sm">Edit</a>
+                                                                        @else
+                                                                            <button
+                                                                                class="btn btn-warning btn-sm">Edit</button>
+                                                                        @endif
+                                                                        @if ($slip->status == 'approved')
+                                                                            <a href=""
+                                                                                class="btn btn-secondary "
+                                                                                target="_blank">Print</a>
+                                                                        @endif --}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
 
 
 
