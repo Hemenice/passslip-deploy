@@ -270,6 +270,8 @@
 
     </main><!-- End #main -->
 
+
+    {{-- original script in case failed --}}
     <script>
         document.getElementById('barcodeInput').addEventListener('change', function(event) {
             const code = event.target.value;

@@ -201,10 +201,10 @@
                                                                                 class="btn btn-warning btn-sm">Edit
                                                                             </a>
                                                                         @endif
-                                                                        @if ($item->status == 'approved')
+                                                                        {{-- @if ($item->status == 'approved')
                                                                             <a href="" class="btn btn-secondary "
                                                                                 target="_blank">Print</a>
-                                                                        @endif
+                                                                        @endif --}}
 
 
                                                                     </div>
@@ -233,10 +233,10 @@
                                                             @endif
                                                         @endif
 
-                                                        @if ($item->status == 'approved')
+                                                        {{-- @if ($item->status == 'approved')
                                                             <a href="{{ route('pass-slip.view', $item->id) }}"
                                                                 class="btn btn-info btn-sm" target="_blank">Print</a>
-                                                        @endif
+                                                        @endif --}}
 
 
 
