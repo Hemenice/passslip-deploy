@@ -190,8 +190,9 @@
                                                             others who access or use our site.</p>
 
                                                         <p><strong>1.2 Eligibility</strong><br>
-                                                            By using this website, you confirm that you are at least 18
-                                                            years old or have received consent from a guardian.</p>
+                                                            By using this website, you confirm that you are user from
+                                                            PIT-TABANGO CAMPUS
+                                                        </p>
 
                                                         <h4>2. Information We Collect</h4>
                                                         <p><strong>2.1 Personal Information</strong><br>
@@ -241,7 +242,7 @@
 
                                                         <h4>8. Contact Us</h4>
                                                         <p>If you have any questions about these Terms and Conditions,
-                                                            please contact us at [Your Contact Information].</p>
+                                                            please contact us at 09317317321.</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
@@ -273,6 +274,8 @@
         </div>
 
     </main>
+
+    <x-guest.footer />
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
