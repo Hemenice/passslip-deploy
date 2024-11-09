@@ -151,7 +151,7 @@
 
 
                                                         <!-- Modal Structure -->
-                                                        <div class="modal fade" id="viewModal{{ $slip->id }}"
+                                                        g<div class="modal fade" id="viewModal{{ $slip->id }}"
                                                             tabindex="-1"
                                                             aria-labelledby="viewModalLabel{{ $slip->id }}"
                                                             aria-hidden="true">
@@ -216,17 +216,17 @@
                                                                             data-bs-dismiss="modal">Close</button>
 
                                                                         <!-- Print button -->
-                                                                        @if ($slip->status !== 'approved')
+                                                                        {{-- @if ($slip->status !== 'approved')
                                                                             <a href="{{ route('guest.guesteditsliprequest', $slip->id) }}"
                                                                                 class="btn btn-warning btn-sm">Edit</a>
                                                                         @else
                                                                             <button
                                                                                 class="btn btn-warning btn-sm">Edit</button>
-                                                                        @endif
-                                                                        @if ($slip->status == 'approved')
+                                                                        @endif --}}
+                                                                        {{-- @if ($slip->status == 'approved')
                                                                             <a href="" class="btn btn-secondary "
                                                                                 target="_blank">Print</a>
-                                                                        @endif
+                                                                        @endif --}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -254,8 +254,8 @@
                                                         </form>
 
                                                         <!-- Print Option -->
-                                                        <a href="#" class="btn btn-secondary btn-sm"
-                                                            target="_blank">Prints</a>
+                                                        {{-- <a href="#" class="btn btn-secondary btn-sm"
+                                                            target="_blank">Prints</a> --}}
 
 
                                                     </td>
