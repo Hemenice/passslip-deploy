@@ -155,10 +155,7 @@
                                                                         <!-- Display Pass Slip Details -->
                                                                         <p><strong>Name:</strong>
                                                                             {{ $item->user->name }}</p>
-                                                                        <p><strong>Date Created:</strong>
-                                                                        <p>{{ \Carbon\Carbon::parse($item->created_at)->format('F d, Y h:i A') }}
-                                                                        </p>
-                                                                        </p>
+
 
                                                                         <p><strong>Control Number:</strong>
                                                                             {{ $item->control_number }}</p>
