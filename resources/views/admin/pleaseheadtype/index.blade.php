@@ -65,6 +65,8 @@
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">Head of Office Type</th>
+                                                <th scope="col">Created at</th>
+                                                <th scope="col">Update at</th>
                                                 <th scope="col">Options</th>
 
 
