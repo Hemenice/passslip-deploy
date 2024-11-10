@@ -103,6 +103,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/head-type">
+                        <i class="bi bi-circle"></i><span>Add head type</span>
+                    </a>
+                </li>
+                <li>
                     <a href="/viewcreatehead">
                         <i class="bi bi-circle"></i><span>Add User</span>
                     </a>
@@ -200,7 +205,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="/barcode-scan">
                 <i class="bi bi-upc-scan"></i>
-                <span>Barcode    Scan</span>
+                <span>Barcode Scan</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
