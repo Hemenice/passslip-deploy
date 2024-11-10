@@ -36,6 +36,7 @@ class GuestProfileController extends Controller
             'email' => 'required|email|unique:users,email,' . $id,
             'phone' => 'required|string|max:15',
             'department' => 'nullable|string|max:255',
+            'head_type' => 'nullable|required',
             'password' => 'nullable|min:8',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Avatar validation
         ]);
