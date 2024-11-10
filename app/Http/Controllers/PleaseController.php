@@ -30,7 +30,7 @@ class PleaseController extends Controller
 
         Please::create($fields);
 
-        return redirect('/pleaseheadtypepost')->with('success', 'Head of Office Type Created Successfully');
+        return redirect('/viewheadtype')->with('success', 'Head of Office Type Created Successfully');
     }
 
 

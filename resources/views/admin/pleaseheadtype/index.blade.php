@@ -77,6 +77,8 @@
                                                     <th scope="row"><a href="#">{{ $head['id'] }}</a>
                                                     </th>
                                                     <td>{{ $head['please_name'] ?? 'Default Name' }}</td>
+                                                    <td>{{ $head['created_at'] ?? 'Default Name' }}</td>
+                                                    <td>{{ $head['updated_at'] ?? 'Default Name' }}</td>
                                                     <td>
 
 
