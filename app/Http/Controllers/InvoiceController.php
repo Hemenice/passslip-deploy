@@ -17,9 +17,8 @@ class InvoiceController extends Controller
 
     public function showPrintView($id)
     {
-        $slip = Slip::with('user')->findOrFail($id); // Find the pass slip by ID and load related user data
-
-        return view('pass_slips.print_view', compact('slip')); // Return the print view with the pass slip data
+        $slip = Slip::with(['user', 'barcodes'])->findOrFail($id); // Load the pass slip with related user and barcodes
+        return view('pass_slips.print_view', compact('slip'));
     }
 
     public function printPassSlip($id)
