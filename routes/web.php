@@ -42,6 +42,7 @@ Route::post('/verify', [VerificationController::class, 'verifyCode']);
 
 Route::middleware(['admin'])->group(function () {
     //please head of office type related routes
+    Route::get('/viewheadtype', [PleaseController::class, 'index']);
     Route::get('/pleaseheadtypepost', [PleaseController::class, 'viewcreateheadtype']);
     Route::post('/pleaseheadtypepost', [PleaseController::class, 'createheadtype']);
     //barcode related routes

@@ -37,50 +37,7 @@
                 <!-- Left side columns -->
                 <div class="col-lg-12">
                     <div class="row">
-                        <!-- Department -->
-                        {{-- <div class="col-12">
-                            <div class="card recent-sales overflow-auto">
 
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                            class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Department <span>| Today</span></h5>
-
-                                    <table class="table table-borderless datatable">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Head Name</th>
-                                                <th scope="col">Head Department</th>
-                                                <th scope="col">Head Email</th>
-                                                <th scope="col">Head Password</th>
-                                                <th scope="col">Head Phone Number</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-
-
-                                        </tbody>
-                                    </table>
-
-                                </div>
-
-                            </div>
-                        </div> --}}
-                        <!-- End Recent Sales -->
 
                         <!-- Recent Sales -->
                         <div class="col-12">
@@ -101,51 +58,26 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <h5 class="card-title">Purpose</h5>
+                                    <h5 class="card-title">Head of Office Type</h5>
 
                                     <table class="table table-borderless datatable">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Purpose Type</th>
-                                                <th scope="col">Purpsoe Description</th>
-                                                <th scope="col">Date Added</th>
-                                                <th scope="col">Option</th>
+                                                <th scope="col">Head of Office Type</th>
+
+
 
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($purposes as $purpose)
+                                            @foreach ($headtype as $head)
                                                 <tr>
-                                                    <th scope="row"><a href="#">{{ $purpose['id'] }}</a>
+                                                    <th scope="row"><a href="#">{{ $head['id'] }}</a>
                                                     </th>
-                                                    <td>{{ $purpose['purpose_name'] ?? 'Default Name' }}</td>
-                                                    <td>{{ $purpose['purpose_description'] ?? 'Technology purpose' }}
-                                                    <td>{{ $purpose['created_at'] ? $purpose['created_at']->format('F j, Y') : 'Technology purpose' }}
-                                                    </td>
+                                                    <td>{{ $head['please_name'] ?? 'Default Name' }}</td>
 
-                                                    </td>
-                                                    <td>
 
-                                                        <!-- Edit Option -->
-
-                                                        <a href="{{ route('admin.editpurpose', $purpose->id) }}"
-                                                            class="btn btn-warning btn-sm">Edit</a>
-                                                        <!-- Print Option -->
-
-                                                        <!-- Delete Option -->
-                                                        <form action="{{ route('purpose.destroy', $purpose->id) }}"
-                                                            method="POST" style="display:inline;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                                onclick="return confirm('Are you sure you want to delete this purpose?');">
-                                                                Delete
-                                                            </button>
-                                                        </form>
-                                                        <!-- Print Option -->
-
-                                                    </td>
 
                                                 </tr>
                                             @endforeach

@@ -103,6 +103,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/viewheadtype">
+                        <i class="bi bi-circle"></i><span>Head Type list</span>
+                    </a>
+                </li>
+                <li>
                     <a href="/pleaseheadtypepost">
                         <i class="bi bi-circle"></i><span>Add head type</span>
                     </a>

@@ -9,15 +9,16 @@ class PleaseController extends Controller
 {
     //
 
-    // public function index()
-    // {
-    //     return view('admin.pleaseheadtype.index');
-    // }
+    public function index()
+    {
+        $headtype = Please::all();
+        return view('admin.pleaseheadtype.index', compact('headtype'));
+    }
 
 
     public function viewcreateheadtype()
     {
-        return view('admin.pleaseheadtype.index');
+        return view('admin.pleaseheadtype.create');
     }
 
 
