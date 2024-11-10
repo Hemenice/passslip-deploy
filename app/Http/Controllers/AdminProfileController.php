@@ -97,10 +97,11 @@ class AdminProfileController extends Controller
             // Store new avatar
             $avatarPath = $request->file('avatar')->store('avatars', 'public');
             $admin->avatar = $avatarPath; // Insert the new avatar path
-        } else {
-            // Keep the existing avatar if no new file is uploaded
-            $admin->avatar = $admin->avatar; // This line can be omitted since it does nothing
         }
+        // else {
+        //     // Keep the existing avatar if no new file is uploaded
+        //     $admin->avatar = $admin->avatar; // This line can be omitted since it does nothing
+        // }
 
         // Save the updated admin user
         $admin->save();

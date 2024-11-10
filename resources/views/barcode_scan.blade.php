@@ -192,24 +192,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($scannedBarcodes as $barcode)
+                                            @foreach ($scannedBarcodes->reverse() as $barcode)
                                                 <tr>
                                                     <th scope="row">{{ $loop->iteration }}</th>
-                                                    {{-- <th scope="row">
-                                                        <img src="{{ asset('storage/barcodes/' . $barcode->slip->barcode) }}"
-                                                            alt="Barcode for {{ $barcode->slip->control_number }}"
-                                                            style="width:100px;" />
-                                                    </th> --}}
-                                                    {{-- <td>{{ $barcode->slip->control_number ?? 'N/A' }}</td> --}}
                                                     <td>{{ $barcode->slip->user->name ?? 'N/A' }}</td>
                                                     <td>{{ $barcode->slip->user->designation ?? 'N/A' }}</td>
 
 
-                                                    {{-- <td>
-                                                        @if ($barcode->slip->status === 'approved')
-                                                            <span class="badge bg-success">Approved</span>
-                                                        @endif
-                                                    </td> --}}
+
                                                     <td>
                                                         {{ ($barcode->slip->time_departure
                                                             ? \Carbon\Carbon::parse($barcode->slip->time_departure)->format('h:i A')
@@ -225,12 +215,7 @@
 
 
 
-                                                    <!-- User who created the slip -->
-                                                    {{-- <td>
-                                                        <span class="badge bg-success">
-                                                            {{ $barcode->slip->approver->name ?? 'N/A' }}</span>
 
-                                                    </td> --}}
 
                                                     <td>
                                                         <span
