@@ -41,10 +41,6 @@ Route::post('/verify', [VerificationController::class, 'verifyCode']);
 
 Route::middleware(['admin'])->group(function () {
 
-
-    //head of office related routes
-    Route::get('/head-type', [HeadTypeController::class, 'index']);
-    Route::post('/createheadtype', [HeadTypeController::class, 'createheadtype']);
     //barcode related routes
     Route::get('/barcodelist', [AdminBarcodeController::class, 'viewbarcodelist'])->name('barcode.view');
     Route::delete(

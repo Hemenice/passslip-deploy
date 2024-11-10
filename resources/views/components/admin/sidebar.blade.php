@@ -102,11 +102,7 @@
                         <i class="bi bi-circle"></i><span>List of Users</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/head-type">
-                        <i class="bi bi-circle"></i><span>Add head type</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="/viewcreatehead">
                         <i class="bi bi-circle"></i><span>Add User</span>

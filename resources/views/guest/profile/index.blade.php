@@ -196,25 +196,6 @@
                                         </div>
 
 
-                                        {{-- Head Type Field (Visible only if the user is "Head of Office") --}}
-                                        @if (Auth::check() && Auth::user()->designation === 'Head of Office')
-                                            <div class="row mb-3">
-                                                <label for="department" class="col-md-4 col-lg-3 col-form-label">Head
-                                                    of Office Type</label>
-                                                <div class="col-md-8 col-lg-9">
-                                                    <select name="department" id="department" class="form-control"
-                                                        required>
-                                                        <option value="" selected disabled>Select Head of Office
-                                                            Type
-                                                        </option>
-                                                        @foreach ($headtype as $department)
-                                                            <option value="{{ $department->head_type }}">
-                                                                {{ $department->head_type }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        @endif
 
                                         <div class="row mb-3">
                                             <label for="phone"
