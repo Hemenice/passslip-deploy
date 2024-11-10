@@ -25,7 +25,7 @@ class PleaseController extends Controller
     public function createheadtype(Request $request)
     {
         $fields = $request->validate([
-            'please_name',
+            'please_name' => 'required|string|max:255', // Ensure 'please_name' is required and is a string
         ]);
 
         Please::create($fields);
