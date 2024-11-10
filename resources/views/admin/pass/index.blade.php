@@ -185,16 +185,16 @@
                                                                             {{ $slip->head_office }} or Admin</p>
                                                                         <p><strong>Reason:</strong> {{ $slip->reason }}
                                                                         </p>
-                                                                        <p><strong>Time of Departure:</strong>
+                                                                        <p><strong>Intended Time of Departure:</strong>
                                                                             {{ \Carbon\Carbon::parse($slip->time_departure)->format('h:i A') }}
                                                                         </p>
-                                                                        <p><strong>Time of Arrival:</strong>
+                                                                        <p><strong>Intended Time of Arrival:</strong>
                                                                             {{ \Carbon\Carbon::parse($slip->time_arrival)->format('h:i A') }}
                                                                         </p>
-                                                                        <p><strong>Date of Departure:</strong>
+                                                                        <p><strong>Intended Date of Departure:</strong>
                                                                             {{ \Carbon\Carbon::parse($slip->date_departure)->format('F j, Y') }}
                                                                         </p>
-                                                                        <p><strong>Date of Arrival:</strong>
+                                                                        <p><strong>Intended Date of Arrival:</strong>
                                                                             {{ \Carbon\Carbon::parse($slip->date_arrival)->format('F j, Y') }}
                                                                         </p>
 

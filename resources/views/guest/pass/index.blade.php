@@ -164,10 +164,10 @@
                                                                             {{ $item->purpose }}</p>
                                                                         <p><strong>Reason:</strong> {{ $item->reason }}
                                                                         </p>
-                                                                        <p><strong>Time of Departure:</strong>
+                                                                        <p><strong>Intended Time of Departure:</strong>
                                                                             {{ \Carbon\Carbon::parse($item->time_departure)->format('h:i A') }}
                                                                         </p>
-                                                                        <p><strong>Time of Arrival:</strong>
+                                                                        <p><strong>Intended Time of Arrival:</strong>
                                                                             {{ \Carbon\Carbon::parse($item->time_arrival)->format('h:i A') }}
                                                                         </p>
                                                                         <p><strong>Date of Departure:</strong>

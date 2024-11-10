@@ -88,7 +88,7 @@
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback">Please select a department!</div>
-                                        </div>
+                                        </div> --}}
 
 
                                         <div class="col-12">
@@ -102,7 +102,7 @@
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback">Please select a designation!</div>
-                                        </div> --}}
+                                        </div>
 
                                         <div class="col-12">
                                             <label for="yourPhone" class="form-label ">Phone Number</label>
