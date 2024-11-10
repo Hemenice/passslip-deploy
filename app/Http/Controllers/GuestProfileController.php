@@ -23,9 +23,12 @@ class GuestProfileController extends Controller
     public function guestupdateprofile(Request $request, $id)
     {
         // Find the guest user and ensure they have the correct designation
-        $guestprofileuser = User::where('id', $id)
-            ->whereIn('designation', ['Faculty', 'Head of Office'])
-            ->firstOrFail();
+        // $guestprofileuser = User::where('id', $id)
+        //     ->whereIn('designation', ['Faculty', 'Head of Office',])
+        //     ->firstOrFail();
+
+        $guestprofileuser = User::where('id', $id)->firstOrFail();
+
 
         // Validate the incoming request data
         $fields = $request->validate([
