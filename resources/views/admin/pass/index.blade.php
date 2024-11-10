@@ -151,7 +151,7 @@
 
 
                                                         <!-- Modal Structure -->
-                                                        g<div class="modal fade" id="viewModal{{ $slip->id }}"
+                                                        <div class="modal fade" id="viewModal{{ $slip->id }}"
                                                             tabindex="-1"
                                                             aria-labelledby="viewModalLabel{{ $slip->id }}"
                                                             aria-hidden="true">
