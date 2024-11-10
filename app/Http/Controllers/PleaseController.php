@@ -30,6 +30,16 @@ class PleaseController extends Controller
 
         Please::create($fields);
 
-        return redirect('/pleaseheadtype');
+        return redirect('/pleaseheadtypepost')->with('success', 'Head of Office Type Created Successfully');
+    }
+
+
+    public function destroyheadtype($id)
+    {
+        $headtype = Please::findOrFail($id);
+
+        $headtype->delete();
+
+        return redirect('/viewheadtype')->with('success', 'headtype Deleted Successfully');
     }
 }

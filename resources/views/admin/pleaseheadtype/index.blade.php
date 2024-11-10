@@ -65,6 +65,7 @@
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">Head of Office Type</th>
+                                                <th scope="col">Options</th>
 
 
 
@@ -76,7 +77,24 @@
                                                     <th scope="row"><a href="#">{{ $head['id'] }}</a>
                                                     </th>
                                                     <td>{{ $head['please_name'] ?? 'Default Name' }}</td>
+                                                    <td>
 
+
+                                                        <!-- Delete Option -->
+                                                        <form action="{{ route('destroyheadtype.destroy', $head->id) }}"
+                                                            method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Are you sure you want to delete this designation?');">
+                                                                Delete
+                                                            </button>
+                                                        </form>
+                                                        <!-- Edit Option -->
+
+
+
+                                                    </td>
 
 
                                                 </tr>

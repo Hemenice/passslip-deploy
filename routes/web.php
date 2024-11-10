@@ -45,6 +45,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/viewheadtype', [PleaseController::class, 'index']);
     Route::get('/pleaseheadtypepost', [PleaseController::class, 'viewcreateheadtype']);
     Route::post('/pleaseheadtypepost', [PleaseController::class, 'createheadtype']);
+    Route::delete('/pleaseheadtypepost/{id}', [PleaseController::class, 'destroyheadtype'])->name('destroyheadtype.destroy');
+
     //barcode related routes
     Route::get('/barcodelist', [AdminBarcodeController::class, 'viewbarcodelist'])->name('barcode.view');
     Route::delete(

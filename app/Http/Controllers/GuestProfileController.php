@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Please;
 use App\Models\User;
 use App\Models\Department;
 use Illuminate\Http\Request;
@@ -14,12 +15,12 @@ class GuestProfileController extends Controller
     {
         // Fetch the logged-in user
         $guestprofileuser = Auth::user();
-        $headtype = User::all();
+        $pleaseheadtype = Please::all();
 
 
         // Pass the user and departments to the view
         $departments = Department::all();
-        return view('guest.profile.index', compact('guestprofileuser', 'departments', 'headtype'));
+        return view('guest.profile.index', compact('guestprofileuser', 'departments', 'pleaseheadtype'));
     }
 
     public function guestupdateprofile(Request $request, $id)
