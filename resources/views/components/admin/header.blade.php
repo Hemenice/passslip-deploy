@@ -79,6 +79,8 @@
                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                      <li class="dropdown-header">
                          <h6> {{ Auth::check() ? Auth::user()->name : 'Admin' }}</h6>
+                         {{ Auth::check() ? (Auth::user()->designation === 'Admin' ? 'System Administrator' : Auth::user()->designation) : 'sad' }}
+                         <br>
                          <span> {{ Auth::check() ? Auth::user()->email : 'Admin' }}</span>
                      </li>
                      <li>
