@@ -34,7 +34,7 @@
                             <h5 class="card-title">Add Office Type</h5>
 
                             <!-- General Form Elements -->
-                            <form action="/createdesignation" method="POST">
+                            <form action="/pleaseheadtypepost" method="POST">
                                 @csrf
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Head of Office Type</label>
