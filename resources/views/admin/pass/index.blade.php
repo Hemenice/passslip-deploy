@@ -133,6 +133,11 @@
                                                             {{-- {{ ucfirst($slip->status) }} --}}
                                                         @endif
 
+                                                        @if ($slip->status == 'approved')
+                                                            <a href="{{ route('pass-slip.view', $slip->id) }}"
+                                                                class="btn btn-info btn-sm" target="_blank">Print</a>
+                                                        @endif
+
                                                         <!-- Show View button only if status is 'approved' -->
                                                         <!-- "View" button that triggers the modal -->
                                                         @if ($slip->status == 'approved')
