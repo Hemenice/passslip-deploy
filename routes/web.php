@@ -28,6 +28,7 @@ use App\Http\Controllers\GuestPasswordController;
 use App\Http\Controllers\AdminPassSlipSlipController;
 use App\Http\Controllers\AdminRequestPassSlipController;
 use App\Http\Controllers\HeadTypeController;
+use App\Http\Controllers\PleaseController;
 
 // SMS RELATED ROUTES
 
@@ -40,7 +41,9 @@ Route::post('/verify', [VerificationController::class, 'verifyCode']);
 
 
 Route::middleware(['admin'])->group(function () {
-
+    //please head of office type related routes
+    Route::get('/pleaseheadtypepost', [PleaseController::class, 'viewcreateheadtype']);
+    Route::post('/pleaseheadtypepost', [PleaseController::class, 'createheadtype']);
     //barcode related routes
     Route::get('/barcodelist', [AdminBarcodeController::class, 'viewbarcodelist'])->name('barcode.view');
     Route::delete(
