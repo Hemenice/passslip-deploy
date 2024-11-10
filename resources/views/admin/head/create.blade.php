@@ -58,6 +58,14 @@
                                 </div>
 
                                 <div class="row mb-3">
+                                    <label for="inputText" class="col-sm-2 col-form-label">
+                                        Head Of Office Type</label>
+                                    <div class="col-sm-10">
+                                        <input name="head_type" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
                                     <label for="designationSelect" class="col-sm-2 col-form-label">Designation</label>
                                     <div class="col-sm-10">
                                         <select name="designation" id="designationSelect" class="form-control">

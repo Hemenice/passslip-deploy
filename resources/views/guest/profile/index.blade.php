@@ -114,6 +114,17 @@
                                         </div>
                                     </div>
 
+                                    @if (Auth::check() && Auth::user()->designation === 'Head of Office')
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Head of Office Type</div>
+                                            <div class="col-lg-9 col-md-8">
+                                                {{ Auth::check() ? Auth::user()->head_type ?? 'Unavailable' : 'NULL' }}
+
+                                            </div>
+                                        </div>
+                                    @endif
+
+
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Phone</div>
                                         <div class="col-lg-9 col-md-8">
@@ -183,6 +194,20 @@
                                                 </select>
                                             </div>
                                         </div>
+
+
+                                        {{-- Head Type Field (Visible only if the user is "Head of Office") --}}
+                                        @if (Auth::check() && Auth::user()->designation === 'Head of Office')
+                                            <div class="row mb-3">
+                                                <label for="headType" class="col-md-4 col-lg-3 col-form-label">Head
+                                                    Type</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input name="headType" type="text" class="form-control"
+                                                        id="headType" value="{{ Auth::user()->head_type ?? '' }}">
+                                                </div>
+                                            </div>
+                                        @endif
+
                                         <div class="row mb-3">
                                             <label for="phone"
                                                 class="col-md-4 col-lg-3 col-form-label">Phone</label>
