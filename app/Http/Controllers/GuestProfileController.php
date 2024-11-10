@@ -14,10 +14,12 @@ class GuestProfileController extends Controller
     {
         // Fetch the logged-in user
         $guestprofileuser = Auth::user();
+        $headtype = User::all();
+
 
         // Pass the user and departments to the view
         $departments = Department::all();
-        return view('guest.profile.index', compact('guestprofileuser', 'departments'));
+        return view('guest.profile.index', compact('guestprofileuser', 'departments', 'headtype'));
     }
 
     public function guestupdateprofile(Request $request, $id)
@@ -28,7 +30,6 @@ class GuestProfileController extends Controller
         //     ->firstOrFail();
 
         $guestprofileuser = User::where('id', $id)->firstOrFail();
-
 
         // Validate the incoming request data
         $fields = $request->validate([
