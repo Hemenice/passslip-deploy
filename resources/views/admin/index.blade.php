@@ -106,7 +106,7 @@
 
 
                         <!-- Approved Card -->
-                        <div class="col-xxl-4 col-xl-4">
+                        {{-- <div class="col-xxl-4 col-xl-4">
 
                             <div class="card info-card canceled-card">
 
@@ -142,7 +142,8 @@
                                 </div>
                             </div>
 
-                        </div><!-- End Approved Card -->
+                        </div> --}}
+                        <!-- End Approved Card -->
 
                         <!-- Total Pass Slip Card -->
                         <div class="col-xxl-4 col-xl-4">
