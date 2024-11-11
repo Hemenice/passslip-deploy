@@ -96,12 +96,14 @@ class GuestController extends Controller
         // Initialize an empty collection for head office slips
         $headOfficeSlips = collect();
 
+        $heads = User::all();
+
         // If the user is 'Head of Office,' retrieve slips where they are chosen as approver
         if ($userDesignation === 'Head of Office') {
             $headOfficeSlips = Slip::where('head_office', $userId)->get();
         }
 
-        return view('guest.pass.index', compact('slip', 'totalPassSlips', 'headOfficeSlips'));
+        return view('guest.pass.index', compact('slip', 'totalPassSlips', 'headOfficeSlips', 'heads'));
     }
 
 

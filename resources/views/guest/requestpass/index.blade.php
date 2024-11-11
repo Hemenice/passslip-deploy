@@ -114,6 +114,21 @@
                                 </div>
 
                                 <!-- Approving Authority -->
+                                {{-- <div class="row mb-3">
+                                    <label for="head_office" class="col-sm-2 col-form-label">Approving Authority</label>
+                                    <div class="col-sm-10">
+                                        <select name="head_office" id="head_office" class="form-control" required>
+                                            <option value="" selected disabled>Select Head</option>
+                                            @foreach ($heads as $head)
+                                                <!-- Exclude current user from the dropdown if they are Head of Office -->
+                                                <option value="{{ $head->id }}">
+                                                    {{ $head->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div> --}}
+
                                 <div class="row mb-3">
                                     <label for="head_office" class="col-sm-2 col-form-label">Approving Authority</label>
                                     <div class="col-sm-10">
@@ -123,6 +138,16 @@
                                                 <!-- Exclude current user from the dropdown if they are Head of Office -->
                                                 <option value="{{ $head->id }}">
                                                     {{ $head->name }}
+                                                    <!-- Show head_type below the name if designation is 'Head of Office' -->
+                                                    @if ($head->designation === 'Head of Office')
+                                                        <div class="d-flex align-items-center mt-1">
+                                                            <span
+                                                                class="text-muted">{{ $head->head_type ?? 'Unavailable' }}</span>
+                                                            <!-- Small green circle to indicate online -->
+                                                            <span class="ms-2"
+                                                                style="display: inline-block; width: 8px; height: 8px; background-color: green; border-radius: 50%;"></span>
+                                                        </div>
+                                                    @endif
                                                 </option>
                                             @endforeach
                                         </select>
