@@ -411,7 +411,7 @@
 
                         </div>
 
-                        <div class="col-xxl-4 col-xl-6">
+                        <div class="col-xxl-4 col-xl-4">
 
                             <div class="card info-card user-card">
 
@@ -452,7 +452,7 @@
 
                         </div>
 
-                        <div class="col-xxl-4 col-xl-6">
+                        <div class="col-xxl-4 col-xl-12">
 
                             <div class="card info-card user-card">
 
