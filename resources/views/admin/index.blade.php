@@ -470,21 +470,19 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <h5 class="card-title"> Non-teaching personnel </h5>
+                                    <h5 class="card-title">Non-teaching personnel</h5>
 
                                     <div class="d-flex align-items-center">
                                         <div
                                             class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-upc-scan"></i>
+                                            <i class="bi bi-people-fill"></i> <!-- Adjust icon if needed -->
                                         </div>
                                         <div class="ps-3">
-                                            <h6>0</h6 class="text-danger small pt-1 fw-bold">
+                                            <h6>{{ $totalNonTeaching }}</h6>
                                             <span class="text-muted small pt-2 ps-1">Total Non-teaching
                                                 personnel</span>
-
                                         </div>
                                     </div>
-
                                 </div>
 
 

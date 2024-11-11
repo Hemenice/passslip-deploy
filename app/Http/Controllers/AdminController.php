@@ -49,6 +49,7 @@ class AdminController extends Controller
         $totalUsers = User::count();
         $totalAdmin = User::where('designation', 'Admin')->count();
         $totalBarcode = Barcode::all();
+        $totalNonTeaching = User::whereNotIn('designation', ['Admin', 'Head of Office', 'Faculty'])->count();
 
 
         // Check if the user is authenticated
@@ -66,6 +67,7 @@ class AdminController extends Controller
                 'totalAdmin',
                 'totalApproved',
                 'totalBarcode',
+                'totalNonTeaching', 
 
             ));
         } else {
