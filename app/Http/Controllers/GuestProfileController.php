@@ -38,7 +38,7 @@ class GuestProfileController extends Controller
             'email' => 'required|email|unique:users,email,' . $id,
             'phone' => 'required|string|max:15',
             'department' => 'nullable|string|max:255',
-            'head_type' => 'nullable|required',
+            'head_type' => 'nullable|string|max:255',
             'password' => 'nullable|min:8',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Avatar validation
         ]);
@@ -48,7 +48,7 @@ class GuestProfileController extends Controller
         $guestprofileuser->email = $fields['email'];
         $guestprofileuser->phone_number = $fields['phone'];
         $guestprofileuser->department = $fields['department'] ?? $guestprofileuser->department;
-
+        $guestprofileuser->head_type = $fields['head_type'] ?? $guestprofileuser->head_type; // Assign head_type
         // Check if the password is set, and update if provided
         if (!empty($fields['password'])) {
             $guestprofileuser->password = bcrypt($fields['password']);
