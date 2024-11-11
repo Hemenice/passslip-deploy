@@ -39,7 +39,6 @@ class HeadController extends Controller
             'name' => 'required',
             'department' => 'required',
             'designation' => 'required',
-            'head_type' => ['nullable', 'required'],
             'email' => 'required',
             'password' => 'required',
             'phone_number' => 'required',
