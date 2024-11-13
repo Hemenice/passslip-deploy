@@ -67,24 +67,20 @@
                                             </div>
                                         @endif
 
-                                        @if (Session::has('success'))
+                                        @if (session()->has('success'))
                                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                {{ Session::get('success') }}
+                                                {{ session('success') }}
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                     aria-label="Close"></button>
                                             </div>
                                         @endif
 
-
-
                                         <div class="col-12">
                                             <label for="yourEmail" class="form-label">Email</label>
-                                            <input value="{{ old('email') }}" type="email" name="email"
-                                                class="form-control" id="yourEmail" required>
-                                            <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                            <input value="{{ session('email') ?? old('email') }}" type="email"
+                                                name="email" class="form-control" id="yourEmail" required>
+                                            <div class="invalid-feedback">Please enter a valid Email address!</div>
                                         </div>
-
-
 
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
@@ -109,10 +105,11 @@
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
                                         </div>
                                         <div class="col-12">
-                                            <p class="small mb-0">Don't have account? <a href="/register">Create an
+                                            <p class="small mb-0">Don't have an account? <a href="/register">Create an
                                                     account</a></p>
                                         </div>
                                     </form>
+
                                 </div>
                             </div>
                         </div>

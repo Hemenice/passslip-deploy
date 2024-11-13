@@ -64,6 +64,10 @@ class RegisterController extends Controller
 
 
         // Redirect to login page with success message
-        return redirect('/login')->with('success', 'Registered successfully. Please wait for the administrator to verify your account.');
+        // return redirect('/login')->with('success', 'Registered successfully. Please wait for the administrator to verify your account.');
+        return redirect('/login')->with([
+            'success' => 'Registered successfully. Please wait for the administrator to verify your account.',
+            'email' => $request->email,
+        ]);
     }
 }
