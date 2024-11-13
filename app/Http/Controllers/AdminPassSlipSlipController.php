@@ -33,7 +33,7 @@ class AdminPassSlipSlipController extends Controller
         $slip = Slip::findOrFail($id); // Retrieve the slip by ID
         $totalPending = Slip::where('status', 'pending')->count();
         $purpose = Purpose::all();
-        $departments = Department::all();
+        $departments =1 Department::all();
         $heads = User::all();
 
         return view('admin.pass.edit', compact('slip', 'totalPending', 'purpose', 'departments', 'heads'));
