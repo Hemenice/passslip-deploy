@@ -9,9 +9,6 @@
     <!-- ======= Header ======= -->
     <x-admin.header />
     <!-- End Header -->
-
-    <!-- ======= Sidebar ======= -->
-    <!-- ======= Sidebar ======= -->
     <x-admin.sidebar />
     <!-- End Sidebar-->
 
@@ -128,15 +125,13 @@
                                             {{ Auth::check() ? Auth::user()->email : 'email@gmail.com' }}</div>
                                     </div>
 
-                                    {{-- <div class="row">
+                                    <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Account Created</div>
                                         <div class="col-lg-9 col-md-8">
                                             value="{{ Auth::check() ? (Auth::user()->designation === 'Admin' ? 'null' : (Auth::user()->created_at ? Auth::user()->created_at->format('F j, Y, h:i A') : 'Unavailable')) : 'Unavailable' }}"
-
-
                                         </div>
 
-                                    </div> --}}
+                                    </div>
 
 
 
@@ -212,17 +207,7 @@
                                             </div>
                                         </div>
 
-                                        {{-- <!-- Account Created Date -->
-                                        <div class="row mb-3">
-                                            <label for="accountCreated"
-                                                class="col-md-4 col-lg-3 col-form-label">Account Created</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input name="accountCreated" type="text" class="form-control"
-                                                    id="accountCreated"
-                                                    value="{{ Auth::check() ? Auth::user()->created_at->format('F j, Y, h:i A') : 'N/A' }}"
-                                                    readonly>
-                                            </div>
-                                        </div> --}}
+                            
 
                                         <!-- Submit Button -->
                                         <div class="text-center">

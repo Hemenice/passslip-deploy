@@ -23,7 +23,7 @@
 
                 <li class="nav-item dropdown pe-3">
 
-                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href=""
                         data-bs-toggle="dropdown">
                         <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2">Not verified</span>
@@ -76,7 +76,7 @@
             <h1>Buttons</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item">Components</li>
                     <li class="breadcrumb-item active">Buttons</li>
                 </ol>

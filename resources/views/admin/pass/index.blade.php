@@ -219,19 +219,6 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Close</button>
-
-                                                                        <!-- Print button -->
-                                                                        {{-- @if ($slip->status !== 'approved')
-                                                                            <a href="{{ route('guest.guesteditsliprequest', $slip->id) }}"
-                                                                                class="btn btn-warning btn-sm">Edit</a>
-                                                                        @else
-                                                                            <button
-                                                                                class="btn btn-warning btn-sm">Edit</button>
-                                                                        @endif --}}
-                                                                        {{-- @if ($slip->status == 'approved')
-                                                                            <a href="" class="btn btn-secondary "
-                                                                                target="_blank">Print</a>
-                                                                        @endif --}}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -248,19 +235,13 @@
                                                             method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('DELETE')
-                                                            {{-- <button type="submit" class="btn btn-danger btn-sm"
-                                                                onclick="return confirm('Are you sure you want to delete this pass slip?');">
-                                                                Delete
-                                                            </button> --}}
-                                                            {{-- no security warning --}}
+
                                                             <button type="submit" class="btn btn-danger btn-sm">
                                                                 Delete
                                                             </button>
                                                         </form>
 
-                                                        <!-- Print Option -->
-                                                        {{-- <a href="#" class="btn btn-secondary btn-sm"
-                                                            target="_blank">Prints</a> --}}
+
 
 
                                                     </td>
@@ -290,21 +271,7 @@
 
 
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/chart.js/chart.umd.js"></script>
-    <script src="assets/vendor/echarts/echarts.min.js"></script>
-    <script src="assets/vendor/quill/quill.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <x-admin.footerscript />
 
 </body>
 
