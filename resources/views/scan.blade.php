@@ -139,7 +139,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($scannedPassSlips as $passSlip)
+                                        @foreach ($scannedPassSlips->reverse() as $passSlip)
                                             <tr>
                                                 <td>{{ $passSlip->control_number }}</td>
                                                 <td>{{ $passSlip->department }}</td>

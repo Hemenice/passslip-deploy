@@ -342,9 +342,7 @@
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-
-
-    <x-admin.footerscript
+    <x-admin.footerscript />
 
 </body>
 
