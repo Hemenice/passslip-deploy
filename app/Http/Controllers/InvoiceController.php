@@ -4,11 +4,12 @@
 
 namespace App\Http\Controllers;
 
-use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use App\Models\Slip;
+use App\Models\Barcode;
 use Illuminate\Http\Request;
 
 use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 
 
 
@@ -21,16 +22,17 @@ class InvoiceController extends Controller
 
         $slip = Slip::with(['user', 'barcodes'])->findOrFail($id);
         // Load the pass slip with related user and barcodes
-        return view('pass_slips.print_view', compact('slip'));
+        $scannedBarcodes = Barcode::all(); // Adjust this to your actual fetching logic
+        return view('pass_slips.print_view', compact('slip', 'scannedBarcodes'));
         // return view('pass_slips.print_view', compact('slip', 'barcodes')); // Return the print view with the pass slip data
     }
 
     public function printPassSlip($id)
     {
         $slip = Slip::with('user')->findOrFail($id);
+        $scannedBarcodes = Barcode::all(); // Adjust this to your actual fetching logic
 
-
-        $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip')); // Passing $slip to the view
+        $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip', 'scannedBarcodes')); // Passing $slip to the view
 
         return $pdf->stream('print_view.pdf');
     }
