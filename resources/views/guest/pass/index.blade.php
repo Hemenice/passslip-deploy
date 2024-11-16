@@ -263,6 +263,7 @@
                                                 @foreach ($headOfficeSlips as $item)
                                                     <tr>
                                                         {{-- <th scope="row"><a href="#">{{ $item->id }}</a> --}}
+                                                        <th scope="row">{{ $loop->iteration }}</th>
                                                         </th>
                                                         <th scope="row"><a
                                                                 href="#">{{ $item->user->name }}</a>

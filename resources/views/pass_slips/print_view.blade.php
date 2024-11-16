@@ -150,13 +150,13 @@
 
         <div class="row">
             <span class="label">Actual time of Departure:</span>
-            <span>{{ $barcode->actual_time_departure ? \Carbon\Carbon::parse($barcode->actual_time_departure)->format('h:i A') : 'N/A' }}</span>
+            <span>{{ $scannedBarcodes->actual_time_departure ? \Carbon\Carbon::parse($scannedBarcodes->actual_time_departure)->format('h:i A') : 'N/A' }}</span>
 
         </div>
 
         <div class="row">
             <span class="label">Actual time of Arrival:</span>
-            <span>{{ $barcode->actual_time_arrival ? \Carbon\Carbon::parse($barcode->actual_time_arrival)->format('h:i A') : 'N/A' }}</span>
+            <span>{{ $scannedBarcodes->actual_time_arrival ? \Carbon\Carbon::parse($scannedBarcodes->actual_time_arrival)->format('h:i A') : 'N/A' }}</span>
         </div>
 
         <div class="row">
