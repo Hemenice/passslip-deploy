@@ -239,12 +239,12 @@
 
                                                         @if ($item->status == 'approved')
                                                             <a href="{{ route('pass-slip.view', $item->id) }}"
-                                                                class="btn btn-primary btn-sm" target="_blank">Print
+                                                                class="btn btn-info btn-sm" target="_blank">Print
                                                                 View</a>
                                                         @endif
                                                         @if ($item->status == 'approved')
                                                             <a href="{{ route('pass-slip.print', $item->id) }}"
-                                                                class="btn btn-secondary btn-sm" target="_blank">
+                                                                class="btn btn-info btn-sm" target="_blank">
                                                                 Print Now
                                                             </a>
                                                         @endif
