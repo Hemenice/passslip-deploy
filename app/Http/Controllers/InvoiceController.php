@@ -29,8 +29,6 @@ class InvoiceController extends Controller
     {
         $slip = Slip::with('user')->findOrFail($id);
 
-        // Ensure the image URL is absolute so it works with the PDF renderer
-        $slip->barcode_url = asset('storage/barcodes/' . $slip->barcode);
 
         $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip')); // Passing $slip to the view
 
