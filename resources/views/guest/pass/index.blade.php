@@ -84,7 +84,7 @@
 
                                             <!-- Display slips for the user themselves -->
                                             {{-- @foreach ($slip as $index => $item) --}}
-                                            @foreach ($slip as $item)
+                                            @foreach ($slip->reverse() as $item)
                                                 <tr>
                                                     {{-- <th scope="row">{{ $index + 1 }}</th> --}}
                                                     <!-- Display sequential numbers starting from 1 -->

@@ -76,7 +76,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($slip as $slip)
+                                            @foreach ($slip->reverse() as $slip)
                                                 <tr>
                                                     {{-- <th scope="row"><a href="#">{{ $slip->id }}</a></th> --}}
                                                     <th> <a

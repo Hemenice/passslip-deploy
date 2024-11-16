@@ -63,7 +63,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($faculty as $faculty)
+                                            @foreach ($faculty->reverse() as $faculty)
                                                 <tr>
                                                     <th scope="row"><a href="#">{{ $faculty['id'] }}</a></th>
                                                     <td>{{ $faculty['name'] ?? 'Default Name' }}</td>

@@ -124,7 +124,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($barcodes as $barcode)
+                                            @foreach ($barcodes->reverse() as $barcode)
                                                 <tr>
                                                     <th scope="row">{{ $loop->iteration }}</th>
                                                     {{-- <th scope="row">

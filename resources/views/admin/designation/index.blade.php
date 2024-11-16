@@ -62,7 +62,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($designations as $designation)
+                                            @foreach ($designations->reverse() as $designation)
                                                 <tr>
                                                     <th scope="row"><a href="#">{{ $designation['id'] }}</a>
                                                     </th>

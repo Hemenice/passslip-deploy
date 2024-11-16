@@ -70,7 +70,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($departments as $department)
+                                            @foreach ($departments->reverse() as $department)
                                                 <tr>
                                                     <th scope="row"><a href="#">{{ $department['id'] }}</a>
                                                     </th>

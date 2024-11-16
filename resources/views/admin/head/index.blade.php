@@ -75,7 +75,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($heads as $head)
+                                            @foreach ($heads->reverse() as $head)
                                                 @if (auth()->user()->id !== $head->id)
                                                     <!-- Skip the current logged-in user -->
                                                     <tr>

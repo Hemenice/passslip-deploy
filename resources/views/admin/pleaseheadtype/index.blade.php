@@ -74,7 +74,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($headtype as $head)
+                                            @foreach ($headtype->reverse() as $head)
                                                 <tr>
                                                     <th scope="row"><a href="#">{{ $head['id'] }}</a>
                                                     </th>

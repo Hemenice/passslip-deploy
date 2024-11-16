@@ -69,7 +69,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($purposes as $purpose)
+                                            @foreach ($purposes->reverse() as $purpose)
                                                 <tr>
                                                     <th scope="row"><a href="#">{{ $purpose['id'] }}</a>
                                                     </th>
