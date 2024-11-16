@@ -67,7 +67,7 @@
                                     <table class="table table-borderless datatable">
                                         <thead>
                                             <tr>
-                                                {{-- <th scope="col">#</th> --}}
+                                                <th scope="col">#</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Approving Authority</th>
                                                 <th scope="col">Barcode</th>
@@ -79,6 +79,7 @@
                                             @foreach ($slip->reverse() as $slip)
                                                 <tr>
                                                     {{-- <th scope="row"><a href="#">{{ $slip->id }}</a></th> --}}
+                                                    <th scope="row">{{ $loop->iteration }}</th>
                                                     <th> <a
                                                             href="#">{{ $slip->user ? $slip->user->name : 'N/A' }}</a>
                                                     </th>

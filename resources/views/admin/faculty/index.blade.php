@@ -65,7 +65,7 @@
                                         <tbody>
                                             @foreach ($faculty->reverse() as $faculty)
                                                 <tr>
-                                                    <th scope="row"><a href="#">{{ $faculty['id'] }}</a></th>
+                                                    <th scope="row">{{ $loop->iteration }}</th>
                                                     <td>{{ $faculty['name'] ?? 'Default Name' }}</td>
                                                     <td>{{ $faculty['verification_code'] ?? 'Uknown' }}</td>
                                                     <td>{{ $faculty['email'] ?? 'default@example.com' }}</td>

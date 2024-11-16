@@ -79,7 +79,8 @@
                                                 @if (auth()->user()->id !== $head->id)
                                                     <!-- Skip the current logged-in user -->
                                                     <tr>
-                                                        <th scope="row"><a href="#">{{ $head->id }}</a>
+                                                        {{-- <th scope="row"><a href="#">{{ $head->id }}</a> --}}
+                                                        <th scope="row">{{ $loop->iteration }}</th>
                                                         </th>
                                                         <td>{{ $head->name ?? 'Default Name' }}</td>
                                                         <td>{{ $head->verification_code ?? 'Admin Created' }}</td>

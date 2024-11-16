@@ -76,7 +76,7 @@
                                         <tbody>
                                             @foreach ($headtype->reverse() as $head)
                                                 <tr>
-                                                    <th scope="row"><a href="#">{{ $head['id'] }}</a>
+                                                    <th scope="row">{{ $loop->iteration }}</th>
                                                     </th>
                                                     <td>{{ $head['please_name'] ?? 'Default Name' }}</td>
                                                     <td>{{ $head['created_at'] ?? 'Default Name' }}</td>

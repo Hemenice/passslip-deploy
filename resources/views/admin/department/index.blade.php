@@ -72,7 +72,7 @@
                                         <tbody>
                                             @foreach ($departments->reverse() as $department)
                                                 <tr>
-                                                    <th scope="row"><a href="#">{{ $department['id'] }}</a>
+                                                    <th scope="row">{{ $loop->iteration }}</th>
                                                     </th>
                                                     <td>{{ $department['dept_name'] ?? 'Default Name' }}</td>
                                                     <td>{{ $department['department_description'] ?? 'Technology Department' }}

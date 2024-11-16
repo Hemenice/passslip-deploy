@@ -69,7 +69,7 @@
                                     <table class="table table-borderless datatable">
                                         <thead>
                                             <tr>
-                                                {{-- <th scope="col">#</th> --}}
+                                                <th scope="col">#</th>
                                                 <th scope="col">Name</th>
                                                 {{-- <th scope="col">Control Number</th> --}}
                                                 <th scope="col">Date Created</th>
@@ -84,9 +84,11 @@
 
                                             <!-- Display slips for the user themselves -->
                                             {{-- @foreach ($slip as $index => $item) --}}
+
                                             @foreach ($slip->reverse() as $item)
                                                 <tr>
                                                     {{-- <th scope="row">{{ $index + 1 }}</th> --}}
+                                                    <th scope="row">{{ $loop->iteration }}</th>
                                                     <!-- Display sequential numbers starting from 1 -->
                                                     <th scope="row">
                                                         <a href="#">

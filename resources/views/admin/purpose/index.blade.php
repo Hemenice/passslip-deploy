@@ -71,7 +71,7 @@
                                         <tbody>
                                             @foreach ($purposes->reverse() as $purpose)
                                                 <tr>
-                                                    <th scope="row"><a href="#">{{ $purpose['id'] }}</a>
+                                                    <th scope="row">{{ $loop->iteration }}</th>
                                                     </th>
                                                     <td>{{ $purpose['purpose_name'] ?? 'Default Name' }}</td>
                                                     <td>{{ $purpose['purpose_description'] ?? 'Technology purpose' }}
