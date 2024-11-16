@@ -3,83 +3,178 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Individual Pass/Time Adjustment Slip</title>
     <style>
+        @media print {
+            img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
         }
 
-        h2 {
+        .container {
+            width: 400px;
+            border: 4px solid black;
+            padding: 10px;
+        }
+
+        .header {
             text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
-        .section {
-            margin-bottom: 20px;
+        .row {
+            margin-bottom: 5px;
+            align-items: left;
+            text-align: left;
         }
 
         .label {
-            font-weight: bold;
+            display: inline-block;
+            width: 150px;
+            text-align: left;
         }
 
-        .underline {
-            border-bottom: 1px solid #000;
-            padding-bottom: 2px;
-            display: inline-block;
+        .input {
             width: 200px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .separator {
+            border-top: 2px solid black;
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+
+        img {
+            margin: auto;
+            width: 250px;
         }
     </style>
 </head>
 
 <body>
-    <h2>Individual Pass/Time Adjustment Slip</h2>
 
-    <div class="section">
-        <p><span class="label">To be filled up by the requesting Employee:</span></p>
-        <p>Name: <span class="underline">{{ $slip->user->name }}</span></p>
-        <p>Date: <span class="underline">{{ $slip->created_at->format('F j, Y') }}</span></p>
+    <div class="container">
 
-        <p>Control Number: <span class="">{{ $slip->control_number }}</span></p>
-        <p>Barcode: <img src="{{ asset('storage/barcodes/' . $slip->barcode) }}"
-                alt="Barcode for {{ $slip->control_number }}" style="width:100px;" /></p>
+        <div class="header">
+            INDIVIDUAL PASS/TIME ADJUSTMENT SLIP
+        </div>
+        <div class="separator"></div>
 
-        <p>Permission is requested to:</p>
-        <p>Leave the Office premises during office hours from:</p>
-        <p>Intended time of Departure: <span
-                class="underline">{{ \Carbon\Carbon::parse($slip->time_departure)->format('h:i A') }}</span></p>
-        <p>Intended time of Arrival: <span
-                class="underline">{{ \Carbon\Carbon::parse($slip->time_arrival)->format('h:i A') }}</span></p>
+        <div class="header">
+            TO BE FILLED UP BY THE REQUESTING EMPLOYEE
+        </div>
+        <div class="separator"></div>
 
-        <p>Purpose: <span class="underline">{{ $slip->purpose }}</span></p>
-        <p>Reason: <span class="underline">{{ $slip->reason }}</span></p>
+        <div class="row">
+            <span>Name:</span>
+            <span>{{ $slip->user->name }}</span>
+        </div>
+
+        <div class="row">
+            <span>Date:</span>
+            <span>{{ $slip->created_at->format('F j, Y') }}</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="row">
+            <span>Control Number:</span>
+            <span>{{ $slip->control_number }}</span>
+        </div>
+
+        <div class="row">
+            <img src="{{ asset('storage/barcodes/' . $slip->barcode) }}" alt="Barcode for {{ $slip->control_number }}">
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="header">
+            Permission is requested to Leave the Office premises during office hours from:
+        </div>
+
+        <div class="row">
+            <span>Intended time of Departure:</span>
+            <span>{{ \Carbon\Carbon::parse($slip->time_departure)->format('h:i A') }}</span>
+        </div>
+
+        <div class="row">
+            <span>Intended time of Arrival:</span>
+            <span>{{ \Carbon\Carbon::parse($slip->time_arrival)->format('h:i A') }}</span>
+        </div>
+
+        <div class="row">
+            <span>Purpose:</span>
+            <span>{{ $slip->purpose }}</span>
+        </div>
+
+        <div class="row">
+            <span>Reason:</span>
+            <span>{{ $slip->reason }}</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="header">
+            TO BE FILLED UP BY THE APPROVING AUTHORITY
+        </div>
+        <div class="separator"></div>
+
+        <div class="row"> <br>
+            <span>Approved By:</span>
+            <span><strong>{{ strtoupper(\App\Models\User::where('id', $slip->approved_by)->value('name')) }}</strong></span>
+
+        </div>
+        <br>
+
+
+        <div class="separator"></div>
+
+        <div class="header">
+            Filled up by guard or Barcode Scanned
+        </div>
+        <div class="separator"></div>
+
+        <div class="row">
+            <span class="label">Actual time of Departure:</span>
+            <span>{{ \Carbon\Carbon::parse($slip->actual_time_departure)->format('h:i A') }}</span>
+
+        </div>
+
+        <div class="row">
+            <span class="label">Actual time of Arrival:</span>
+            <span>{{ \Carbon\Carbon::parse($slip->actual_time_arrival)->format('h:i A') }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Guard:</span> <br>
+            <span>_______________________________</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="header">
+            GENERATED FROM E-PASS SLIP RECORDING SYSTEM
+        </div>
     </div>
 
-    <div class="section">
-        <p><span class="label">To be filled up by the approving authority:</span></p>
-        <p>Approved By: <span class="underline">
-                {{ \App\Models\User::where('id', $slip->approved_by)->value('name') }}</span></p>
-        <p>(Head of Office/Authorized Representative)</p>
-    </div>
 
-    <div class="section">
-        <p><span class="label">To be filled up by the guard or scanned in exit using barcode scanner:</span></p>
-        @if ($slip->barcodes->isEmpty())
-            <p>Actual time of Departure: <span class="underline">Unavailable</span></p>
-            <p>Actual time of Arrival: <span class="underline">Unavailable</span></p>
-        @else
-            @foreach ($slip->barcodes as $barcode)
-                <p>Actual time of Departure: <span class="underline">
-                        {{ $barcode->actual_time_departure ? \Carbon\Carbon::parse($barcode->actual_time_departure)->format('h:i A') : 'Unavailable' }}
-                    </span>
-                </p>
-                <p>Actual time of Arrival: <span class="underline">
-                        {{ $barcode->actual_time_arrival ? \Carbon\Carbon::parse($barcode->actual_time_arrival)->format('h:i A') : 'Unavailable' }}
-                    </span>
-                </p>
-            @endforeach
-        @endif
-        <p>Guard: <span class="underline">{{ $slip->guard }}</span></p>
-    </div>
+
+
+
 </body>
 
 </html>
