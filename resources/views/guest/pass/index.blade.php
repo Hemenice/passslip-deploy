@@ -237,7 +237,7 @@
                                                             @endif
                                                         @endif
 
-                                                        @if ($item->status == 'approved')
+                                                        {{-- @if ($item->status == 'approved')
                                                             <a href="{{ route('pass-slip.view', $item->id) }}"
                                                                 class="btn btn-info btn-sm" target="_blank">Print
                                                                 View</a>
@@ -247,6 +247,24 @@
                                                                 class="btn btn-info btn-sm" target="_blank">
                                                                 Print Now
                                                             </a>
+                                                        @endif --}}
+
+                                                        @if ($item->status == 'approved')
+                                                            <!-- Button for Print View -->
+                                                            <form action="{{ route('pass-slip.view', $item->id) }}"
+                                                                method="GET" target="_blank" style="display: inline;">
+                                                                <button type="submit" class="btn btn-info btn-sm">Print
+                                                                    View</button>
+                                                            </form>
+                                                        @endif
+
+                                                        @if ($item->status == 'approved')
+                                                            <!-- Button for Print Now -->
+                                                            <form action="{{ route('pass-slip.print', $item->id) }}"
+                                                                method="GET" target="_blank" style="display: inline;">
+                                                                <button type="submit" class="btn btn-info btn-sm">Print
+                                                                    Now</button>
+                                                            </form>
                                                         @endif
 
 
