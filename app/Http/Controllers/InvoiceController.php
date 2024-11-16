@@ -32,7 +32,7 @@ class InvoiceController extends Controller
 
         $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip')); // Passing $slip to the view
 
-        return $pdf->download('print_view.pdf');
+        return $pdf->stream('print_view.pdf');
     }
 
     /**
