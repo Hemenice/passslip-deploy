@@ -232,7 +232,7 @@
 
 
                                                         <!-- Delete Option -->
-                                                        <form action="{{ route('slip.destroy', $slip->id) }}"
+                                                        {{-- <form action="{{ route('slip.destroy', $slip->id) }}"
                                                             method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('DELETE')
@@ -240,6 +240,22 @@
                                                             <button type="submit" class="btn btn-danger btn-sm">
                                                                 Delete
                                                             </button>
+                                                        </form>
+
+
+ --}}
+
+                                                        <a href="{{ route('slip.destroy', $slip->id) }}"
+                                                            class="btn btn-danger btn-sm"
+                                                            onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this?')) { document.getElementById('delete-form-{{ $slip->id }}').submit(); }">
+                                                            Deletes
+                                                        </a>
+
+                                                        <form id="delete-form-{{ $slip->id }}"
+                                                            action="{{ route('slip.destroy', $slip->id) }}"
+                                                            method="POST" style="display: none;">
+                                                            @csrf
+                                                            @method('DELETE')
                                                         </form>
 
 
