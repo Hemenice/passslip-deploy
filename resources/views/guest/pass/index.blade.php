@@ -250,22 +250,21 @@
                                                         @endif --}}
 
                                                         @if ($item->status == 'approved')
-                                                            <!-- Button for Print View -->
-                                                            <form action="{{ route('pass-slip.view', $item->id) }}"
-                                                                method="GET" target="_blank" style="display: inline;">
-                                                                <button type="submit" class="btn btn-info btn-sm">Print
-                                                                    View</button>
-                                                            </form>
+                                                            <!-- Link for Print View -->
+                                                            <a href="{{ route('pass-slip.view', $item->id) }}"
+                                                                target="_blank" class="btn btn-info btn-sm">
+                                                                Print View
+                                                            </a>
                                                         @endif
 
                                                         @if ($item->status == 'approved')
-                                                            <!-- Button for Print Now -->
-                                                            <form action="{{ route('pass-slip.print', $item->id) }}"
-                                                                method="GET" target="_blank" style="display: inline;">
-                                                                <button type="submit" class="btn btn-info btn-sm">Print
-                                                                    Now</button>
-                                                            </form>
+                                                            <!-- Link for Print Now -->
+                                                            <a href="{{ route('pass-slip.print', $item->id) }}"
+                                                                target="_blank" class="btn btn-info btn-sm">
+                                                                Print Now
+                                                            </a>
                                                         @endif
+
 
 
 

@@ -22,7 +22,7 @@ class InvoiceController extends Controller
 
         $slip = Slip::with(['user', 'barcodes'])->findOrFail($id);
         // Load the pass slip with related user and barcodes
-        $scannedBarcodes = Barcode::all(); // Adjust this to your actual fetching logic
+        $scannedBarcodes = Barcode::findOrFail($id); // Adjust this to your actual fetching logic
         return view('pass_slips.print_view', compact('slip', 'scannedBarcodes'));
         // return view('pass_slips.print_view', compact('slip', 'barcodes')); // Return the print view with the pass slip data
     }
@@ -30,7 +30,7 @@ class InvoiceController extends Controller
     public function printPassSlip($id)
     {
         $slip = Slip::with('user')->findOrFail($id);
-        $scannedBarcodes = Barcode::all(); // Adjust this to your actual fetching logic
+        $scannedBarcodes = Barcode::findOrFail($id);  // Adjust this to your actual fetching logic
 
         $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip', 'scannedBarcodes')); // Passing $slip to the view
 
