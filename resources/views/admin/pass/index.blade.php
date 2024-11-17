@@ -134,10 +134,9 @@
                                                             {{-- {{ ucfirst($slip->status) }} --}}
                                                         @endif
 
-                                                        @if ($slip->status == 'approved')
-                                                            <a href="{{ route('pass-slip.view', $slip->id) }}"
-                                                                class="btn btn-info btn-sm" target="_blank">Print</a>
-                                                        @endif
+
+                                                        <a href="{{ route('pass-slip.view', $item->id) }}"
+                                                            class="btn btn-info btn-sm" target="_blank">Print</a>
 
                                                         <!-- Show View button only if status is 'approved' -->
                                                         <!-- "View" button that triggers the modal -->
@@ -221,6 +220,10 @@
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Close</button>
                                                                     </div>
+
+                                                                    <a href="{{ route('pass-slip.view', $item->id) }}"
+                                                                        class="btn btn-info btn-sm"
+                                                                        target="_blank">Print</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -229,6 +232,9 @@
                                                         <!-- Edit Option -->
                                                         <a href="{{ route('admin.editRequest', $slip->id) }}"
                                                             class="btn btn-warning btn-sm">Edit</a>
+
+                                                        <a href="{{ route('pass-slip.view', $item->id) }}"
+                                                            class="btn btn-info btn-sm" target="_blank">Print</a>
 
 
                                                         <!-- Delete Option -->
@@ -246,9 +252,8 @@
  --}}
 
                                                         <a href="{{ route('slip.destroy', $slip->id) }}"
-                                                            class="btn btn-danger btn-sm"
-                                                            onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this?')) { document.getElementById('delete-form-{{ $slip->id }}').submit(); }">
-                                                            Deletes
+                                                            class="btn btn-danger btn-sm">
+                                                            Delete
                                                         </a>
 
                                                         <form id="delete-form-{{ $slip->id }}"

@@ -240,14 +240,14 @@
                                                         @if ($item->status == 'approved')
                                                             <a href="{{ route('pass-slip.view', $item->id) }}"
                                                                 class="btn btn-info btn-sm" target="_blank">Print
-                                                                View</a>
+                                                            </a>
                                                         @endif
-                                                        @if ($item->status == 'approved')
+                                                        {{-- @if ($item->status == 'approved')
                                                             <a href="{{ route('pass-slip.print', $item->id) }}"
                                                                 class="btn btn-info btn-sm" target="_blank">
                                                                 Print Now
                                                             </a>
-                                                        @endif
+                                                        @endif --}}
 
 
 
@@ -397,7 +397,7 @@
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
-                                                                                    class="btn btn-secondary"
+                                                                                    class="btn btn-secondary btn-sm"
                                                                                     data-bs-dismiss="modal">Close</button>
 
                                                                                 @if ($item->status == 'approved')
@@ -425,6 +425,7 @@
                                                                     <button
                                                                         class="btn btn-warning btn-sm">Edit</button>
                                                                 @endif
+
                                                                 @if ($item->status == 'approved')
                                                                     <a href="{{ route('pass-slip.view', $item->id) }}"
                                                                         class="btn btn-info btn-sm"
