@@ -173,20 +173,24 @@
         <div class="row">
             <span class="label">Actual time of Departure:</span>
             <span>
-                {{ $slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_departure
-                    ? \Carbon\Carbon::parse($slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_departure)->format(
-                        'h:i A',
-                    )
-                    : 'N/A' }}
+                @php
+                    $barcode = $slip->barcodes->where('slip_id', $slip->id)->first();
+                @endphp
+                {{ $barcode && $barcode->actual_time_departure
+                    ? \Carbon\Carbon::parse($barcode->actual_time_departure)->format('h:i A')
+                    : 'NOT AVAILABLE' }}
             </span>
         </div>
 
         <div class="row">
             <span class="label">Actual time of Arrival:</span>
             <span>
-                {{ $slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_arrival
-                    ? \Carbon\Carbon::parse($slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_arrival)->format('h:i A')
-                    : 'N/A' }}
+                @php
+                    $barcode = $slip->barcodes->where('slip_id', $slip->id)->first();
+                @endphp
+                {{ $barcode && $barcode->actual_time_arrival
+                    ? \Carbon\Carbon::parse($barcode->actual_time_arrival)->format('h:i A')
+                    : 'NOT AVAILABLE' }}
             </span>
         </div>
 
