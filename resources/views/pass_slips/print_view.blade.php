@@ -148,18 +148,45 @@
         </div>
         <div class="separator"></div>
 
-        <div class="row">
+        {{-- <div class="row">
             <span class="label">Actual time of Departure:</span>
-            <span>{{ $slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_departure ?? 'No departure time' }}</span>
-
-
-
+            <span>{{ $slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_departure ?? 'N/A' }}</span>
         </div>
 
         <div class="row">
             <span class="label">Actual time of Arrival:</span>
-            <span>{{ $slip->actual_time_arrival ? \Carbon\Carbon::parse($slip->actual_time_arrival)->format('h:i A') : 'N/A' }}</span>
+            <span>{{ $slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_arrival ?? 'N/A' }}</span>
+        </div> --}}
+
+        <div class="row">
+            <span class="label">Date Scanned:</span>
+            <span>
+                {{ $slip->barcodes->where('slip_id', $slip->id)->first()->date_scanned
+                    ? \Carbon\Carbon::parse($slip->barcodes->where('slip_id', $slip->id)->first()->date_scanned)->format('M d, Y h:i A')
+                    : 'N/A' }}
+            </span>
         </div>
+
+        <div class="row">
+            <span class="label">Actual time of Departure:</span>
+            <span>
+                {{ $slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_departure
+                    ? \Carbon\Carbon::parse($slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_departure)->format(
+                        'h:i A',
+                    )
+                    : 'N/A' }}
+            </span>
+        </div>
+
+        <div class="row">
+            <span class="label">Actual time of Arrival:</span>
+            <span>
+                {{ $slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_arrival
+                    ? \Carbon\Carbon::parse($slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_arrival)->format('h:i A')
+                    : 'N/A' }}
+            </span>
+        </div>
+
 
         <div class="row">
             <span class="label">Guard:</span> <br>
