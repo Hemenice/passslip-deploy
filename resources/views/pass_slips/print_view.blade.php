@@ -150,7 +150,9 @@
 
         <div class="row">
             <span class="label">Actual time of Departure:</span>
-            <span>{{ $slip->actual_time_departure ? \Carbon\Carbon::parse($slip->actual_time_departure)->format('h:i A') : 'N/A' }}</span>
+            <span>{{ $slip->barcodes->where('slip_id', $slip->id)->first()->actual_time_departure ?? 'No departure time' }}</span>
+
+
 
         </div>
 
