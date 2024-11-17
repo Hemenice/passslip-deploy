@@ -161,8 +161,8 @@
         <div class="row">
             <span class="label">Date Scanned:</span>
             <span>
-                {{ $slip->barcodes->where('slip_id', $slip->id)->first()->date_scanned
-                    ? \Carbon\Carbon::parse($slip->barcodes->where('slip_id', $slip->id)->first()->date_scanned)->format('M d, Y h:i A')
+                {{ $slip->barcodes->where('slip_id', $slip->id)->first()->created_at
+                    ? \Carbon\Carbon::parse($slip->barcodes->where('slip_id', $slip->id)->first()->created_at)->format('M d, Y h:i A')
                     : 'N/A' }}
             </span>
         </div>
