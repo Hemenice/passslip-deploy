@@ -233,8 +233,8 @@
                                                         <a href="{{ route('admin.editRequest', $slip->id) }}"
                                                             class="btn btn-warning btn-sm">Edit</a>
 
-                                                        <a href="{{ route('pass-slip.view', $slip->id) }}"
-                                                            class="btn btn-info btn-sm" target="_blank">Print</a>
+                                                        {{-- <a href="{{ route('pass-slip.view', $slip->id) }}"
+                                                            class="btn btn-info btn-sm" target="_blank">Print</a> --}}
 
 
                                                         <!-- Delete Option -->
