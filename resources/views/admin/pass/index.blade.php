@@ -135,7 +135,7 @@
                                                         @endif
 
 
-                                                        <a href="{{ route('pass-slip.view', $item->id) }}"
+                                                        <a href="{{ route('pass-slip.view', $slip->id) }}"
                                                             class="btn btn-info btn-sm" target="_blank">Print</a>
 
                                                         <!-- Show View button only if status is 'approved' -->
@@ -221,7 +221,7 @@
                                                                             data-bs-dismiss="modal">Close</button>
                                                                     </div>
 
-                                                                    <a href="{{ route('pass-slip.view', $item->id) }}"
+                                                                    <a href="{{ route('pass-slip.view', $slip->id) }}"
                                                                         class="btn btn-info btn-sm"
                                                                         target="_blank">Print</a>
                                                                 </div>
@@ -233,7 +233,7 @@
                                                         <a href="{{ route('admin.editRequest', $slip->id) }}"
                                                             class="btn btn-warning btn-sm">Edit</a>
 
-                                                        <a href="{{ route('pass-slip.view', $item->id) }}"
+                                                        <a href="{{ route('pass-slip.view', $slip->id) }}"
                                                             class="btn btn-info btn-sm" target="_blank">Print</a>
 
 
