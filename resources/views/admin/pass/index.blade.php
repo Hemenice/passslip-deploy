@@ -251,21 +251,14 @@
 
  --}}
 
-                                                        <a href="{{ route('slip.destroy', $slip->id) }}"
-                                                            class="btn btn-danger btn-sm">
-                                                            Delete
-                                                        </a>
-
-                                                        <form id="delete-form-{{ $slip->id }}"
-                                                            action="{{ route('slip.destroy', $slip->id) }}"
-                                                            method="POST" style="display: none;">
+                                                        <form action="{{ route('slip.destroy', $slip->id) }}"
+                                                            method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                                Delete
+                                                            </button>
                                                         </form>
-
-
-
-
                                                     </td>
                                                 </tr>
                                             @endforeach

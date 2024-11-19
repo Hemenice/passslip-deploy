@@ -61,21 +61,42 @@
 
         .separator {
             border-top: 2px solid black;
-            margin-top: 6px;
-            margin-bottom: 6px;
+            margin-top: 8px;
+            margin-bottom: 8px;
         }
 
         .separatornew {
             border-top: 1px solid black;
-            margin-top: 30px;
-            margin-bottom: 30px;
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+
+        .separatornewnew {
+            border-top: 1px solid black;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .separatortranspo {
+            border-top: 1px solid black;
+            margin-top: 6px;
+            margin-bottom: 6px;
         }
 
         .separatornospace {
             border-top: 1px solid black;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            margin-top: 2px;
+            margin-bottom: 2px;
         }
+
+
+        .separatornospaceguard {
+            border-top: 1px solid black;
+            margin-top: 1px;
+            margin-bottom: 1px;
+        }
+
+
 
         img {
             margin: auto;
@@ -96,7 +117,7 @@
             <div class="separator"></div>
 
             <div class="header">
-                TO BE FILLED UP BY THE REQUESTING EMPLOYEE
+                TO BE FILLED OUT BY THE REQUESTING EMPLOYEE
             </div>
             <div class="separator"></div>
 
@@ -151,7 +172,7 @@
             <div class="separator"></div>
 
             <div class="header">
-                TO BE FILLED UP BY THE APPROVING AUTHORITY
+                TO BE FILLED OUT BY THE APPROVING AUTHORITY
             </div>
             <div class="separator"></div>
 
@@ -165,12 +186,12 @@
             <div class="separator"></div>
 
             <div class="header">
-                Filled up by guard or Barcode Scanned
+                FILLED OUT BY GUARD OR BARCODE SCANNED
             </div>
             <div class="separator"></div>
 
             <div class="row">
-                <span class="label">Date Scanned:</span>
+                <span ">Date Scanned:</span>
                 <span>
                     @php
                         $barcode = $slip->barcodes->where('slip_id', $slip->id)->first();
@@ -182,7 +203,7 @@
             </div>
 
             <div class="row">
-                <span class="label">Actual time of Departure:</span>
+                <span ">Actual time of Departure:</span>
                 <span>
                     @php
                         $barcode = $slip->barcodes->where('slip_id', $slip->id)->first();
@@ -190,11 +211,18 @@
                     {{ $barcode && $barcode->actual_time_departure
                         ? \Carbon\Carbon::parse($barcode->actual_time_departure)->format('h:i A')
                         : 'NOT AVAILABLE' }}
+                    <span>____________________</span>
+
+
                 </span>
+
+
             </div>
 
+
+
             <div class="row">
-                <span class="label">Actual time of Arrival:</span>
+                <span>Actual time of Arrival:</span>
                 <span>
                     @php
                         $barcode = $slip->barcodes->where('slip_id', $slip->id)->first();
@@ -202,19 +230,54 @@
                     {{ $barcode && $barcode->actual_time_arrival
                         ? \Carbon\Carbon::parse($barcode->actual_time_arrival)->format('h:i A')
                         : 'NOT AVAILABLE' }}
+                    <span>_______________________</span>
+                    <span style="display: block; text-align: left; margin-left: 220px;">Guard</span>
                 </span>
-            </div>
-
-            <div class="row">
-                <span class="label">Guard:</span> <br>
-                <span>_______________________________</span>
             </div>
 
             <div class="separator"></div>
 
             <div class="header">
+                TRANSPORTATION REQUEST
+            </div>
+            <div class="separator"></div>
+            <br>
+
+            <div class="row">
+                <span>Requesting Division/Office:
+                </span>
+            </div>
+
+            <div class="separatortranspo"></div>
+            <div class="row">
+                <span>Remarks:
+                </span>
+            </div>
+            <div class="separatortranspo"></div>
+
+            <div class="row">
+                <span>Reccomended Driver: <strong> ARTEMIO S. PASTOR</strong>
+                </span>
 
             </div>
+            <div class="separatortranspo"></div>
+
+            <div class="row">
+                <span>Reccomending Approval: <strong>MARIA GLETA B. ABENDAN</strong>
+                </span>
+            </div>
+            <div class="separatortranspo"></div>
+            <span style="display: block; text-align: left; margin-left: 160px;">AO/Authorized Representative</span>
+            <br>
+            <br>
+            <div class="row">
+                <span>Approved: <strong>EUTIQUIO A. PERNIS</strong>
+                </span>
+            </div>
+            <div class="separatortranspo"></div>
+            <span style="display: block; text-align: left; margin-left: 125px;">D-IV/D-III/Authorized
+                Representative</span>
+
         </div>
 
         <!-- Duplicate Slip -->
@@ -229,78 +292,99 @@
 
             <div class="row">
                 <span>
-                    <p>This is to certify that <strong>{{ $slip->user->name }}</strong> attended to</p>
-                    <div class="separatornew"></div>
-                    <div class="separatornew"></div>
-                    <div class="separatornew"></div>
-                    <div class="separatornew"></div>
-                    <div class="separatornew"></div>
-                    <div class="separatornew"></div>
+
+                    This is to certify that I attended to <strong>{{ strtoupper($slip->user->name) }}</strong>
                 </span>
             </div>
+            <div class="separatornew"></div>
 
-
-
-            <div class="separatornospace"></div>
             <div class="row">
-                <span>On
-
+                <span>
+                    OF
+                    PALOMPON INSTITUTE OF TECHNOLOGY TABANGO,
                 </span>
             </div>
+            <div class="separatornew"></div>
 
-            <div class="separatornospace"></div>
             <div class="row">
-                <span>At (a.m./p.m)
-                    <div class="separatornospace"></div>
+                <span>
+                    TABANGO, LEYTE
                 </span>
             </div>
+            <div class="separatornew"></div>
+            <div class="row">
+                <span>
+                    WHEN HE/SHE TRANSACTED BUSINESS WITH MY AGREEMENT COMPANY.
+                </span>
+
+            </div>
+            <div class="separatornew"></div>
+
+            <div class="row">
+                <span>
+                    ON
+                </span>
+            </div>
+            <div class="separatornew"></div>
 
 
 
 
+            AT<div class="separatornospace"></div>
+            <span style="display: block; text-align: center;">AM/PM</span>
 
+
+            <div class="separator"></div>
+
+            <br>
             <div class="row"> <br>
-                <span>Signature over Printed Name:</span>
-                <span><strong>{{ strtoupper($slip->user->name) }}</strong></span>
+                <div class="separatornospace"></div>
+                <span style="display: block; text-align: center; ">SIGNATURE OVER PRINTED NAME</span>
+
             </div>
-            <span>Position:</span>
-            <span>{{ $slip->user->designation }}</span>
+
             <br>
 
             <div class="separator"></div>
 
-
-
-            <div class="separatornospace"></div>
+            <div class="separatornew"></div>
             <div class="row">
                 <span>Date:
-
                 </span>
             </div>
 
-            <div class="separatornospace"></div>
-            <div class="row">
+            <div class="separatornew"></div>
+
+            <div class="row"> <br>
                 <span>Name of Agency/ies:
-                    <div class="separatornospace"></div>
-                    <div class="separatornew"></div>
                 </span>
             </div>
+            <div class="separatornew"></div>
+            <br>
+            <div class="separatornew"></div>
+            <br>
+            <div class="separatornew"></div>
+            <br>
+            <div class="separatornew"></div>
+            <br>
 
-
-            <div class="separatornospace"></div>
             <div class="row">
                 <span>Tel. No.:
 
                 </span>
             </div>
             <div class="separatornospace"></div>
-            <br>
+
+            <br><br>
 
             <span>In case an employee buys office supplies, <strong>{{ strtoupper($slip->user->name) }}</strong> shall
-                attached an authenticaedcopy of OR of Purchases.</span>
+                attached an authenticated copy of OR of Purchases.</span>
         </div>
+
     </div>
+
     </div>
+
 </body>
 
 </html>
