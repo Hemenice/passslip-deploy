@@ -125,7 +125,7 @@ class GuestRequestController extends Controller
             'reason' => 'required|string',
             'department' => 'required|string',
             'head_office' => 'required|string',
-            // 'status' => 'required',
+            'status' => 'nullable|string',
         ]);
 
         // Update the request pass with validated fields

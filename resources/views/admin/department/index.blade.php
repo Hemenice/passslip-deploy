@@ -62,7 +62,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Depertmant Name</th>
+                                                <th scope="col">Department Name</th>
                                                 <th scope="col">Department Description</th>
                                                 <th scope="col">Date Added</th>
                                                 <th scope="col">Option</th>
