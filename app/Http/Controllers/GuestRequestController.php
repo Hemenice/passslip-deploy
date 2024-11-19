@@ -117,17 +117,20 @@ class GuestRequestController extends Controller
 
         // Validate the incoming request data
         $fields = $request->validate([
-            'time_departure' => 'required|date_format:H:i',
-            'time_arrival' => 'required|date_format:H:i',
+            'time_departure' => 'required|date',
+            'time_arrival' => 'required|date',
             'date_departure' => 'required|date',
             'date_arrival' => 'required|date',
             'purpose' => 'required|string',
-            'reason' => 'required|string',
+            'reason' => 'required|string|max:255',
             'department' => 'required|string',
             'head_office' => 'required|string',
             'status' => 'nullable|string',
         ]);
 
+        $requestPass->save();
+
+        $requestPass = Slip::findOrFail($id);
         // Update the request pass with validated fields
         $requestPass->update($fields);
 
