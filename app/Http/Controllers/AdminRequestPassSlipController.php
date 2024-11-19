@@ -114,28 +114,40 @@ class AdminRequestPassSlipController extends Controller
 
     public function updateRequestPass(Request $request, $id)
     {
-        $requestPass = Slip::find($id);
+        // Find the Slip model using the provided ID
+        $requestPass = Slip::findOrFail($id);
+
+        // Validate the incoming request data
         $fields = $request->validate([
             'time_departure' => 'required|date_format:H:i',
             'time_arrival' => 'required|date_format:H:i',
             'date_departure' => 'required|date',
             'date_arrival' => 'required|date',
             'purpose' => 'required|string',
-            'status' => 'required',  // Ensure only valid statuses
+            'status' => 'required|string', // Ensure only valid statuses
             'reason' => 'required|string',
             'department' => 'required|string',
             'head_office' => 'required|string',
         ]);
 
-        $requestPass->status = $request->input('status');
-        // Update other fields...
+        // Check if there are changes to the model
+        $originalData = $requestPass->only(array_keys($fields));
+        $isChanged = false;
 
-        // Save the updated request
-        $requestPass->save();
-        // Find the request pass and update it
-        $requestPass = Slip::findOrFail($id); // Replace with your model
-        $requestPass->update($fields);
+        foreach ($fields as $key => $value) {
+            if ($originalData[$key] !== $value) {
+                $isChanged = true;
+                break;
+            }
+        }
 
-        return redirect('/viewpass')->with('success', 'Request Pass updated successfully.');
+        if ($isChanged) {
+            // Update the model with validated data
+            $requestPass->update($fields);
+            return redirect('/viewpass')->with('success', 'Request Pass updated successfully.');
+        }
+
+        // Redirect with a message indicating no changes were made
+        return redirect('/viewpass')->with('info', 'No changes were made to the Request Pass.');
     }
 }

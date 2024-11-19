@@ -128,13 +128,27 @@ class GuestRequestController extends Controller
             'status' => 'nullable|string',
         ]);
 
-        // Update the request pass
-        // Fill the model with validated data
-        $requestPass->fill($fields);
+        // Update the request pass with validated fields
+        // Check if there are any changes
+        $originalData = $requestPass->only(array_keys($fields));
+        $isChanged = false;
 
-        // Force save to ensure update happens
-        $requestPass->save();
-        // Redirect to the guest pass view with a success message
-        return redirect('/guestpass')->with('success', 'Request Pass updated successfully.');
+        foreach ($fields as $key => $value) {
+            if ($originalData[$key] !== $value) {
+                $isChanged = true;
+                break;
+            }
+        }
+
+        if ($isChanged) {
+            // Fill the model with validated data and save
+            $requestPass->fill($fields);
+            $requestPass->save();
+
+            return redirect('/guestpass')->with('success', 'Request Pass updated successfully.');
+        } else {
+            // Redirect with a message indicating no changes were made
+            return redirect('/guestpass')->with('success', 'Request Pass updated successfully.');
+        }
     }
 }
