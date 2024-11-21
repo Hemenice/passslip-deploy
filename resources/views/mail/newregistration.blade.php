@@ -1,6 +1,6 @@
 Subject: New Account Registration Pending Approval
 
-Dear {{ $adminname }},
+Dear ,
 
 A new user has registered for the E-Pass Slip Recording System and requires approval.
 
