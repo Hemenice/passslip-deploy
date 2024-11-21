@@ -37,9 +37,11 @@ class RegisterController extends Controller
             'department' => ['nullable', 'string'],
             'designation' => ['nullable', 'string'],
             'phone_number' => 'required|string|max:15', // Adjust the max length as needed
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-
+            'email' => ['required', 'email', Rule::unique('users', 'email')], // Check for unique email
+            'password' => ['required', 'string', 'min:8', 'confirmed'], // Confirmed password
+        ], [
+            // Custom error messages
+            'email.unique' => 'The email address is already registered. Please use a different email or log in.',
         ]);
 
         // Set a default value if department is null

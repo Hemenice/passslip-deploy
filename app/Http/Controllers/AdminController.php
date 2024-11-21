@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ApproveUserMail;
 use App\Models\Barcode;
 use App\Models\Head;
 use App\Models\Slip;
@@ -12,6 +13,7 @@ use App\Models\Department;
 use App\Models\Designation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -23,9 +25,14 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'This user is already verified.');
         }
 
+
+
         // Verify the user
         $user->is_verified = true;
         $user->save();
+
+        Mail::to($user->email)->send(new ApproveUserMail($user->name));
+
 
         return redirect()->back()->with('success', 'User has been verified successfully.');
     }
@@ -67,7 +74,7 @@ class AdminController extends Controller
                 'totalAdmin',
                 'totalApproved',
                 'totalBarcode',
-                'totalNonTeaching', 
+                'totalNonTeaching',
 
             ));
         } else {
