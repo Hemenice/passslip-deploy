@@ -34,7 +34,7 @@ class MyTestEmail extends Mailable
     /**
      * Get the message content definition.
      */
-    public function content($name): Content
+    public function content(): Content
     {
         return new Content(
             view: 'mail.test-email',
