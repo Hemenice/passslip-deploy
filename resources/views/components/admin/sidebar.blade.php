@@ -22,12 +22,13 @@
 
         <!-- End Pass Slip Nav -->
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link collapsed " href="/requestpass">
                 <i class="bi bi-calendar4-range"></i>
                 <span>Request Pass Slip</span>
             </a>
-        </li>
+        </li> --}}
+
         <!-- End Request Pass Slip Nav -->
 
         <li class="nav-item">

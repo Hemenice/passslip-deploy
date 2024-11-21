@@ -16,7 +16,7 @@ class MyTestEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(private $name)
     {
         //
     }
@@ -34,10 +34,11 @@ class MyTestEmail extends Mailable
     /**
      * Get the message content definition.
      */
-    public function content(): Content
+    public function content($name): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.test-email',
+            with: ['name' => $this->name],
         );
     }
 

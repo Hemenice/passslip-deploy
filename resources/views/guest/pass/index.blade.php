@@ -93,7 +93,7 @@
                                                     <th scope="row">
                                                         <a href="#">
                                                             @if (Auth::id() === $item->user->id)
-                                                                Your pass slip
+                                                                {{ $item->user->name }}
                                                             @else
                                                                 {{ $item->user->name }}
                                                             @endif

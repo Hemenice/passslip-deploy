@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\MyTestEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\HeadController;
@@ -7,11 +9,13 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PleaseController;
 use App\Http\Controllers\BarcodeController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PurposeController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\HeadTypeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
@@ -25,8 +29,6 @@ use App\Http\Controllers\AdminPasswordController;
 use App\Http\Controllers\GuestPasswordController;
 use App\Http\Controllers\AdminPassSlipSlipController;
 use App\Http\Controllers\AdminRequestPassSlipController;
-use App\Http\Controllers\HeadTypeController;
-use App\Http\Controllers\PleaseController;
 
 // SMS RELATED ROUTES
 
@@ -202,3 +204,10 @@ Route::get('/invoice-pdf', [InvoiceController::class, 'index']);
 
 Route::get('/pass-slip/print/{id}', [InvoiceController::class, 'printPassSlip'])->name('pass-slip.print');
 Route::get('/pass-slip/view/{id}', [InvoiceController::class, 'showPrintView'])->name('pass-slip.view');
+
+
+Route::get('/testroute', function () {
+    $name = "Funny Coder";
+
+    Mail::to('businessmailromer@gmail.com')->send(new MyTestEmail($name));
+});

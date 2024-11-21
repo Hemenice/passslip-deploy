@@ -84,7 +84,6 @@
                                                             href="#">{{ $slip->user ? $slip->user->name : 'N/A' }}</a>
                                                     </th>
                                                     <th> {{ \App\Models\User::where('id', $slip->approved_by)->value('name') }}
-
                                                     </th>
 
                                                     <td>
