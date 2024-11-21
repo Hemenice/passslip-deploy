@@ -37,7 +37,7 @@ class RegisterMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.newregistration.blade.php',
+            view: 'mail.newregistration',
             with: ['name' => $this->adminname],
         );
     }
