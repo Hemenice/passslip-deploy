@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegisterMail;
 use Log;
 use App\Models\User;
 use App\Models\Department;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\UserRegisteredNotification;
 use App\Notifications\UserRegistrationNotification;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -52,6 +54,15 @@ class RegisterController extends Controller
 
         // Create the new user
         $user = User::create($fields);
+
+        //notify the admin using their email
+
+        // Notify all admins via email
+        $adminsemail = User::where('designation', 'Admin')->get();
+        foreach ($adminsemail as $admin) {
+            Mail::to($admin->email)->send(new RegisterMail($admin->name));
+        }
+
 
         // Notify the admin
 
