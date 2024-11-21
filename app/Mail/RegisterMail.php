@@ -38,7 +38,7 @@ class RegisterMail extends Mailable
     {
         return new Content(
             view: 'mail.newregistration',
-            with: ['name' => $this->adminname],
+            with: ['adminname' => $this->adminname],
         );
     }
 
