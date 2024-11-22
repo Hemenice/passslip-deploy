@@ -76,9 +76,9 @@
                                             <input value="{{ old('name') }}" type="text" name="name"
                                                 class="form-control" id="yourName" required>
                                             <div class="invalid-feedback">Please, enter your name!</div>
-
-
-                                            <div class="col-12">
+                                        </div>
+                                        
+                                        <div class="col-12">
                                                 <label for="departmentSelect" class="form-label">Department</label>
                                                 <select name="department" id="departmentSelect" class="form-control"
                                                     required>
@@ -92,7 +92,6 @@
                                                 </select>
                                                 <div class="invalid-feedback">Please select a department!</div>
                                             </div>
-                                        </div>
 
                                         <div class="col-12">
                                             <label for="designationSelect" class="form-label">Designation</label>

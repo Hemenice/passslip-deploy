@@ -48,7 +48,7 @@
         <strong>
             <p class="header">Pass Slip Approved</p>
         </strong>
-        <p>Dear {{ $name }},</p>
+        <p>HI DEAR USER</p>
         <p>We are pleased to inform you that your pass slip request has been <strong>approved</strong>.</p>
         <p>You can now proceed with the authorized activities as per your request.</p>
         <p>To view the details of your approved pass slip, please click the button below:</p>

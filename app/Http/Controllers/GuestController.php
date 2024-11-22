@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use AgeekDev\Barcode\Facades\Barcode;
 use AgeekDev\Barcode\Enums\Type;
 use App\Mail\ApprovePassSlipMail;
+use App\Mail\RequestPassSlipMail;
 use App\Models\Slip;
 use App\Models\User;
 use Twilio\Rest\Client;
@@ -124,7 +125,7 @@ class GuestController extends Controller
             'head_office' => 'required', // This is the selected Head of Office
         ]);
 
-        // Add the current user's ID to $fields
+
         $fields['user_id'] = Auth::id();
         // Set the 'approved_by' field to the selected Head of Office
         $fields['approved_by'] = $fields['head_office'];
@@ -140,11 +141,16 @@ class GuestController extends Controller
         // Notify the admin
         $admin = User::where('designation', 'Admin')->first();
         if ($admin) {
-            $admin->notify(new PassSlipRequestNotification("{$userName} has requested a pass slip"));
+            Mail::to($admin->email)->queue(new RequestPassSlipMail($admin->name)); // Notify admin via email
+            $admin->notify(new PassSlipRequestNotification("{$userName} has requested a pass slip")); // Notify admin via app notification
         }
 
-        // Notify the selected Head of Office via application notification
-        $headOfOffice->notify(new PassSlipRequestNotification("{$userName} has requested a pass slip."));
+
+        // Notify the selected Head of Office via application notification and email
+        if ($headOfOffice) {
+            $headOfOffice->notify(new PassSlipRequestNotification("{$userName} has requested a pass slip.")); // Notify via app
+            Mail::to($headOfOffice->email)->queue(new RequestPassSlipMail($headOfOffice->name)); // Notify via email
+        }
 
         // Handle avatar upload if a new avatar is provided
         if ($request->hasFile('avatar')) {
@@ -181,17 +187,19 @@ class GuestController extends Controller
         // Save the slip record
         $slip->save();
 
-        // Send notification if needed
-        // send sms
-        // $message = "{$user->name} has requested a pass slip. Please visit the website to approve: https://oyster-app-x7aid.ondigitalocean.app/";
-        // $headOfOfficePhoneNumber = "+639704505536";
-        // $this->sendSmsNotification($headOfOfficePhoneNumber, $message);
+
+
 
         return redirect('/guestpass')->with('success', 'Pass Slip Created Successfully');
     }
 
 
 
+    // Send notification if needed
+    // send sms
+    // $message = "{$user->name} has requested a pass slip. Please visit the website to approve: https://oyster-app-x7aid.ondigitalocean.app/";
+    // $headOfOfficePhoneNumber = "+639704505536";
+    // $this->sendSmsNotification($headOfOfficePhoneNumber, $message);
     private function sendSmsNotification($to, $message)
     {
         $sid = env('TWILIO_SID');
@@ -251,13 +259,15 @@ class GuestController extends Controller
             $slip->save();
 
             // Notify the user about the approval
-            $user = $slip->user; // Assuming you have a relationship in Slip model
+            $user = $slip->user;
+            // Assuming you have a relationship in Slip model
             if ($user) {
                 $user->notify(new PassSlipApprovalNotification("Your pass slip has been approved."));
+                Mail::to($user->email)->queue(new ApprovePassSlipMail($user->name));
             }
 
 
-            Mail::to($user->email)->send(new ApprovePassSlipMail($user->name));
+
 
             return redirect()->back()->with('success', 'Pass slip approved successfully.');
         }

@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ApprovePassSlipMail extends Mailable
+class RequestPassSlipMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -27,7 +27,8 @@ class ApprovePassSlipMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'APPROVED PASS SLIP',
+            subject: 'Action Required: New Pass Slip Request',
+
         );
     }
 
@@ -37,7 +38,7 @@ class ApprovePassSlipMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.approvedslip',
+            view: 'mail.requestpassslip',
             with: ['name' => $this->name],
         );
     }
