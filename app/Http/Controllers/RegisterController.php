@@ -59,13 +59,12 @@ class RegisterController extends Controller
 
         //notify the admin using their email
 
-        // Notify all admins via email
         $adminsemail = User::where('designation', 'Admin')->get();
         foreach ($adminsemail as $admin) {
-            Mail::to($admin->email)->send(new RegisterMail($admin->name));
+            // Queue the email instead of sending it synchronously
+            Mail::to($admin->email)->queue(new RegisterMail($admin->name));
         }
-
-
+        
         // Notify the admin
 
         // Notify the admin(s)

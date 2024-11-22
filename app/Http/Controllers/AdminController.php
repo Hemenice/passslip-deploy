@@ -25,16 +25,15 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'This user is already verified.');
         }
 
-
-
-        // Verify the user
         $user->is_verified = true;
+
+        // Queue the email instead of sending it synchronously
+        Mail::to($user->email)->queue(new ApproveUserMail($user->name));
+
+        // Save the user's verification status
         $user->save();
 
-        Mail::to($user->email)->send(new ApproveUserMail($user->name));
-
-
-        return redirect()->back()->with('success', 'User has been verified successfully.');
+        return redirect()->back()->with('success', 'User has been verified successfully. An approval email has been sent.');
     }
     //
     public function index()
