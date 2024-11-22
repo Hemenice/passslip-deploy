@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use AgeekDev\Barcode\Facades\Barcode;
 use AgeekDev\Barcode\Enums\Type;
+use App\Mail\ApprovePassSlipMail;
 use App\Models\Slip;
 use App\Models\User;
 use Twilio\Rest\Client;
@@ -256,7 +257,7 @@ class GuestController extends Controller
             }
 
 
-            Mail::to($user->email)
+            Mail::to($user->email)->send(new ApprovePassSlipMail($user->name));
 
             return redirect()->back()->with('success', 'Pass slip approved successfully.');
         }
