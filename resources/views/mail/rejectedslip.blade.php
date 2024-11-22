@@ -48,7 +48,7 @@
         <strong>
             <p class="header">Pass Slip Request Rejected</p>
         </strong>
-        <p>Dear {{ $name }},</p>
+        <p>Dear User,</p>
         <p>We regret to inform you that your pass slip request has been <strong>rejected</strong>.</p>
         <p>If you believe this decision was made in error or you need further clarification, please contact our support
             team or reach out to your supervisor.</p>

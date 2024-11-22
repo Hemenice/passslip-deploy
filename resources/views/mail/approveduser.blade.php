@@ -27,7 +27,7 @@
 <body>
     <h1 style="font-size: 24px; font-weight: bold;">Subject: Your Account Has Been Approved!</h1>
 
-    <h2>CONGRATULATIONS {{ $name }}!</h2>
+    <h2>CONGRATULATIONS!</h2>
     <p>We are pleased to inform you that your account with the E-Pass Slip Recording System has been successfully
         approved!</p>
 

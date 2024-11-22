@@ -46,7 +46,7 @@
 <body>
     <div class="container">
         <p class="header">New Account Registration Pending Approval</p>
-        <p>Dear {{ $name }},</p>
+        <p>Dear Admin,</p>
         <p>A new user has registered for the <strong>E-Pass Slip Recording System</strong> and requires your approval.
         </p>
         <p>To review and approve the account, please log in to the admin portal by clicking the button below:</p>
