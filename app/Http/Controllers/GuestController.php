@@ -19,6 +19,7 @@ use App\Notifications\EmailNotificationPassSlip;
 use App\Notifications\PassSlipRequestNotification;
 use App\Notifications\PassSlipApprovalNotification;
 use App\Notifications\PassSlipRejectionNotification;
+use Illuminate\Support\Facades\Mail;
 
 class GuestController extends Controller
 {
@@ -253,6 +254,9 @@ class GuestController extends Controller
             if ($user) {
                 $user->notify(new PassSlipApprovalNotification("Your pass slip has been approved."));
             }
+
+
+            Mail::to($user->email)
 
             return redirect()->back()->with('success', 'Pass slip approved successfully.');
         }
