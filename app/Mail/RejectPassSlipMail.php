@@ -27,7 +27,7 @@ class RejectPassSlipMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Reject Pass Slip Mail',
+            subject: 'REJECTED PASS SLIP',
 
         );
     }
@@ -38,7 +38,7 @@ class RejectPassSlipMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.rejectedslip',
             with: ['name' => $this->name],
         );
     }

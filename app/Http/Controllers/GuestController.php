@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use AgeekDev\Barcode\Facades\Barcode;
 use AgeekDev\Barcode\Enums\Type;
 use App\Mail\ApprovePassSlipMail;
+use App\Mail\RejectPassSlipMail;
 use App\Mail\RequestPassSlipMail;
 use App\Models\Slip;
 use App\Models\User;
@@ -289,6 +290,7 @@ class GuestController extends Controller
             $user = $slip->user; // Assuming you have a relationship in Slip model
             if ($user) {
                 $user->notify(new PassSlipRejectionNotification("Your pass slip has been rejected."));
+                Mail::to($user->email)->queue(new RejectPassSlipMail($user->name));
             }
 
             return redirect()->back()->with('success', 'Pass slip disapproved successfully.');
