@@ -28,7 +28,7 @@
             display: inline-block;
             margin-top: 20px;
             padding: 10px 15px;
-            background-color: #28a745;
+            background-color: #001aff;
             color: #ffffff;
             text-decoration: none;
             border-radius: 5px;
