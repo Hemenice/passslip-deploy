@@ -124,7 +124,7 @@
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-dark btn-sm"
                                                                         onclick="return confirm('Are you sure you want to ban this user?');">
-                                                                        Ban
+                                                                        Restrict
                                                                     </button>
                                                                 </form>
                                                             @else
