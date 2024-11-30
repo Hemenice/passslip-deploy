@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Login | EPRS</title>
+    <title>Register | EPRS</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -77,27 +77,27 @@
                                                 class="form-control" id="yourName" required>
                                             <div class="invalid-feedback">Please, enter your name!</div>
                                         </div>
-                                        
+
                                         <div class="col-12">
-                                                <label for="departmentSelect" class="form-label">Department</label>
-                                                <select name="department" id="departmentSelect" class="form-control"
-                                                    required>
-                                                    <option value="" disabled>Select Department</option>
-                                                    @foreach ($departments as $department)
-                                                        <option value="{{ $department->dept_name }}"
-                                                            {{ old('department') == $department->dept_name ? 'selected' : '' }}>
-                                                            {{ $department->dept_name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                <div class="invalid-feedback">Please select a department!</div>
-                                            </div>
+                                            <label for="departmentSelect" class="form-label">Department</label>
+                                            <select name="department" id="departmentSelect" class="form-control"
+                                                required>
+                                                <option value="" disabled>Select Department</option>
+                                                @foreach ($departments as $department)
+                                                    <option value="{{ $department->dept_name }}"
+                                                        {{ old('department') == $department->dept_name ? 'selected' : '' }}>
+                                                        {{ $department->dept_name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">Please select a department!</div>
+                                        </div>
 
                                         <div class="col-12">
                                             <label for="designationSelect" class="form-label">Designation</label>
                                             <select name="designation" id="designationSelect" class="form-control"
                                                 required>
-                                                <option value="" disabled>Select Designation</option>
+                                                <option value="" selected disabled>Select Designation</option>
                                                 @foreach ($designations as $designation)
                                                     <option value="{{ $designation->designation_name }}"
                                                         {{ old('designation') == $designation->designation_name ? 'selected' : '' }}>
@@ -109,10 +109,38 @@
                                         </div>
 
 
+                                        <div class="col-12" id="headTypeContainer" style="display: none;">
+                                            <label for="head_type" class="form-label">Head of Office Type</label>
+                                            <select name="head_type" id="head_type" class="form-control" required>
+                                                <option value="" selected disabled>Select Head of Office Type
+                                                </option>
+                                                @foreach ($pleaseheadtype as $head)
+                                                    <option value="{{ $head->please_name }}">{{ $head->please_name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <script>
+                                            document.getElementById('designationSelect').addEventListener('change', function() {
+                                                const selectedValue = this.value;
+                                                const headTypeContainer = document.getElementById('headTypeContainer');
+
+                                                // Show the head type dropdown only if the selected designation is "Head of Office"
+                                                if (selectedValue === "Head of Office") {
+                                                    headTypeContainer.style.display = "block";
+                                                } else {
+                                                    headTypeContainer.style.display = "none";
+                                                }
+                                            });
+                                        </script>
+
+
                                         <div class="col-12">
                                             <label for="yourPhone" class="form-label">Phone Number</label>
-                                            <input value="{{ old('phone_number') }}" type="text" name="phone_number"
-                                                class="form-control" id="yourPhone" required pattern="[0-9]{11}">
+                                            <input value="{{ old('phone_number') }}" type="text"
+                                                name="phone_number" class="form-control" id="yourPhone" required
+                                                pattern="[0-9]{11}">
                                             <div class="invalid-feedback">Please enter a valid 11-digit phone
                                                 number!
                                             </div>

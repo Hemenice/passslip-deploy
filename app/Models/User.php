@@ -28,6 +28,7 @@ class User extends Authenticatable
         'banned',
         'verification_code',
         'avatar',
+        'head_type',
     ];
 
     /**

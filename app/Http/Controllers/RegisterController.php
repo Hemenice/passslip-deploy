@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\RegisterMail;
 use Log;
 use App\Models\User;
+use App\Models\Please;
+use App\Mail\RegisterMail;
 use App\Models\Department;
 use App\Models\Designation;
 use Illuminate\Support\Str;
@@ -12,9 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Notifications\UserRegisteredNotification;
 use App\Notifications\UserRegistrationNotification;
-use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -25,7 +26,8 @@ class RegisterController extends Controller
 
         $departments = Department::all();
         $designations = Designation::all();
-        return view('auth.register', compact('departments', 'designations'));
+        $pleaseheadtype = Please::all();
+        return view('auth.register', compact('departments', 'designations', 'pleaseheadtype'));
     }
     public function createregister(Request $request)
     {
@@ -36,6 +38,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'department' => ['nullable', 'string'],
             'designation' => ['nullable', 'string'],
+            'pleaseheadtype' => ['nullable', 'string'],
             'phone_number' => 'required|string|max:15', // Adjust the max length as needed
             'email' => ['required', 'email', Rule::unique('users', 'email')], // Check for unique email
             'password' => ['required', 'string', 'min:8', 'confirmed'], // Confirmed password
@@ -64,7 +67,7 @@ class RegisterController extends Controller
             // Queue the email instead of sending it synchronously
             Mail::to($admin->email)->queue(new RegisterMail($admin->name));
         }
-        
+
         // Notify the admin
 
         // Notify the admin(s)
