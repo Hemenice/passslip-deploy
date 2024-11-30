@@ -38,7 +38,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'department' => ['nullable', 'string'],
             'designation' => ['nullable', 'string'],
-            'pleaseheadtype' => ['nullable', 'string'],
+            'head_type' => ['nullable', 'string'],
             'phone_number' => 'required|string|max:15', // Adjust the max length as needed
             'email' => ['required', 'email', Rule::unique('users', 'email')], // Check for unique email
             'password' => ['required', 'string', 'min:8', 'confirmed'], // Confirmed password
