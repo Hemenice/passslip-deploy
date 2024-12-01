@@ -30,11 +30,16 @@ class InvoiceController extends Controller
     public function printPassSlip($id)
     {
         $slip = Slip::with('user')->findOrFail($id);
-        $printbarcode = $slip->barcodes; // Adjust this to your actual fetching logic
+        $scannedBarcodes = Barcode::all(); // Adjust this to your actual fetching logic
 
-        $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip', 'printbarcode')); // Passing $slip to the view
+        // Generate the PDF
+        $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip', 'scannedBarcodes'));
 
-        return $pdf->stream('print_view.pdf');
+        // Force download with explicit headers for better compatibility
+        return response($pdf->output(), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="print_view.pdf"',
+        ]);
     }
 
     /**

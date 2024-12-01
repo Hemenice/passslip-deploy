@@ -135,7 +135,13 @@
 
 
                                                         <a href="{{ route('pass-slip.view', $slip->id) }}"
-                                                            class="btn btn-info btn-sm" target="_blank">Print</a>
+                                                            class="btn btn-info btn-sm" target="_blank">Print View</a>
+
+
+                                                        <a href="{{ route('pass-slip.print', $item->id) }}"
+                                                            class="btn btn-info btn-sm" target="_blank">Print Now
+                                                            </a>
+
 
                                                         <!-- Show View button only if status is 'approved' -->
                                                         <!-- "View" button that triggers the modal -->
@@ -223,6 +229,7 @@
                                                                     <a href="{{ route('pass-slip.view', $slip->id) }}"
                                                                         class="btn btn-info btn-sm"
                                                                         target="_blank">Print</a>
+
                                                                 </div>
                                                             </div>
                                                         </div>
