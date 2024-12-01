@@ -33,25 +33,11 @@ class InvoiceController extends Controller
         $slip = Slip::with('user')->findOrFail($id);
         $scannedBarcodes = Barcode::all(); // Adjust this to your actual fetching logic
 
-        try {
-            // Generate the PDF
-            $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip', 'scannedBarcodes'));
+        // Generate the PDF
+        $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip', 'scannedBarcodes'));
 
-            // Attempt to download the PDF
-            return response($pdf->output(), 200, [
-                'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'attachment; filename="print_view.pdf"',
-            ]);
-        } catch (\Exception $e) {
-            // Fallback to streaming the PDF if download fails
-            try {
-                $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip', 'scannedBarcodes'));
-                return $pdf->stream('print_view.pdf');
-            } catch (\Exception $e) {
-                // Fallback error message if streaming also fails
-                return back()->withErrors('Unable to generate PDF. Please try again later.');
-            }
-        }
+        // Stream the PDF (display in browser or mobile)
+        return $pdf->stream('print_view.pdf');
     }
 
 
