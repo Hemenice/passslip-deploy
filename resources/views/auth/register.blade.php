@@ -111,7 +111,7 @@
 
                                         <div class="col-12" id="headTypeContainer" style="display: none;">
                                             <label for="head_type" class="form-label">Head of Office Type</label>
-                                            <select name="head_type" id="head_type" class="form-control" required>
+                                            <select name="head_type" id="head_type" class="form-control">
                                                 <option value="" selected disabled>Select Head of Office Type
                                                 </option>
                                                 @foreach ($pleaseheadtype as $head)

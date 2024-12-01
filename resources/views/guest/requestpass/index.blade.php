@@ -129,7 +129,7 @@
                                     </div>
                                 </div> --}}
 
-                                <div class="row mb-3">
+                                {{-- <div class="row mb-3">
                                     <label for="head_office" class="col-sm-2 col-form-label">Approving Authority</label>
                                     <div class="col-sm-10">
                                         <select name="head_office" id="head_office" class="form-control" required>
@@ -148,6 +148,22 @@
                                                                 style="display: inline-block; width: 8px; height: 8px; background-color: green; border-radius: 50%;"></span>
                                                         </div>
                                                     @endif
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div> --}}
+
+                                <div class="row mb-3">
+                                    <label for="head_office" class="col-sm-2 col-form-label">Approving Authority</label>
+                                    <div class="col-sm-10">
+                                        <select name="head_office" id="head_office" class="form-control" required>
+                                            <option value="" selected disabled>Select Head</option>
+                                            @foreach ($heads as $head)
+                                                <option value="{{ $head->id }}"
+                                                    {{ !$head->is_available ? 'disabled' : '' }}>
+                                                    {{ $head->name }}, {{ $head->head_type ?? 'Unavailable' }},
+                                                    {{ $head->is_available ? 'Available' : 'Unavailable' }}
                                                 </option>
                                             @endforeach
                                         </select>
