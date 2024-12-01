@@ -29,6 +29,7 @@ class User extends Authenticatable
         'verification_code',
         'avatar',
         'head_type',
+        'is_available',
     ];
 
     /**

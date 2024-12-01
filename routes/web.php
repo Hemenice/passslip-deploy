@@ -27,10 +27,14 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\AdminPasswordController;
 use App\Http\Controllers\GuestPasswordController;
+use App\Http\Controllers\UserAvailabiltyController;
 use App\Http\Controllers\AdminPassSlipSlipController;
 use App\Http\Controllers\AdminRequestPassSlipController;
 
 // SMS RELATED ROUTES
+
+Route::post('/update-availability/{user}', [UserAvailabiltyController::class, 'updateAvailability']);
+
 
 Route::get('/banned', function () {
     return view('banned');

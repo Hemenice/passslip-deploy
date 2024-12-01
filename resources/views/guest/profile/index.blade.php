@@ -58,6 +58,71 @@
 
                             <h2> {{ Auth::check() ? Auth::user()->name : 'Guest' }}</h2>
                             <h3>{{ Auth::user()->designation ?? 'Faculty' }}</h3>
+                            <div class="d-flex align-items-center">
+                                <button id="availabilityButton"
+                                    style="border: none; background: none; box-shadow: none; padding: 0; display: inline-flex; align-items: center;"
+                                    data-user-id="{{ auth()->user()->id }}">
+                                    <span id="availabilityButtonBadge">
+                                        {!! auth()->user()->is_available
+                                            ? '<span class="badge bg-danger text-white"><i class="bi bi-x-circle me-1"></i> Set Unavailable</span>'
+                                            : '<span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Set Available</span>' !!}
+                                    </span>
+                                </button>
+
+                                <br>
+
+                                <span class="ms-3" id="availabilityStatus">
+                                    @if (auth()->user()->is_available)
+                                        <span class="badge bg-success">
+                                            <i class="bi bi-check-circle me-1"></i> Currently Available
+                                        </span>
+                                    @else
+                                        <span class="badge bg-danger">
+                                            <i class="bi bi-exclamation-octagon me-1"></i> Currently Not Available
+                                        </span>
+                                    @endif
+                                </span>
+                            </div>
+
+
+                            <!-- CSRF Meta Tag -->
+                            <meta name="csrf-token" content="{{ csrf_token() }}">
+
+                            <script>
+                                document.getElementById('availabilityButton').addEventListener('click', function() {
+                                    const userId = this.getAttribute('data-user-id');
+                                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+                                    fetch(`/update-availability/${userId}`, {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': csrfToken,
+                                            },
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.success) {
+                                                // Update button design with badge
+                                                this.innerHTML = data.is_available ?
+                                                    `<span class="badge bg-danger text-white"><i class="bi bi-x-circle me-1"></i> Set Unavailable</span>` :
+                                                    `<span class="badge bg-success text-white"><i class="bi bi-check-circle me-1"></i> Set Available</span>`;
+
+                                                // Update status with badge design
+                                                const statusElement = document.getElementById('availabilityStatus');
+                                                statusElement.innerHTML = data.is_available ?
+                                                    `<span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Currently Available</span>` :
+                                                    `<span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i>Currently  Not Available</span>`;
+                                            } else {
+                                                alert('Failed to update availability.');
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Error:', error);
+                                            alert('Something went wrong. Please try again.');
+                                        });
+                                });
+                            </script>
                             <div class="social-links mt-2">
                                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -100,6 +165,23 @@
 
 
                                     <h5 class="card-title">Profile Details</h5>
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">Availability</div>
+                                        <div class="col-lg-9 col-md-8">
+                                            @if (auth()->user()->is_available)
+                                                <span class="badge bg-success">
+                                                    <i class="bi bi-check-circle me-1"></i> Currently Available
+                                                </span>
+                                            @else
+                                                <span class="badge bg-danger">
+                                                    <i class="bi bi-exclamation-octagon me-1"></i> Currently Not
+                                                    Available
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label ">Full Name</div>
