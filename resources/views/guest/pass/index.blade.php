@@ -83,9 +83,9 @@
 
 
                                             <!-- Display slips for the user themselves -->
-                                            {{-- @foreach ($item as $index => $item) --}}
+                                            {{-- @foreach ($slip as $index => $item) --}}
 
-                                            @foreach ($item->reverse() as $item)
+                                            @foreach ($slip->reverse() as $item)
                                                 <tr>
                                                     {{-- <th scope="row">{{ $index + 1 }}</th> --}}
                                                     <th scope="row">{{ $loop->iteration }}</th>
