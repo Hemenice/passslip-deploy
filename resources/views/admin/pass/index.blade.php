@@ -138,9 +138,9 @@
                                                             class="btn btn-info btn-sm" target="_blank">Print View</a>
 
 
-                                                        <a href="{{ route('pass-slip.print', $item->id) }}"
+                                                        <a href="{{ route('pass-slip.print', $slip->id) }}"
                                                             class="btn btn-info btn-sm" target="_blank">Print Now
-                                                            </a>
+                                                        </a>
 
 
                                                         <!-- Show View button only if status is 'approved' -->
@@ -228,7 +228,17 @@
 
                                                                     <a href="{{ route('pass-slip.view', $slip->id) }}"
                                                                         class="btn btn-info btn-sm"
-                                                                        target="_blank">Print</a>
+                                                                        target="_blank">Print View</a>
+
+
+                                                                    <a href="{{ route('pass-slip.print', $slip->id) }}"
+                                                                        class="btn btn-secondary btn-sm"
+                                                                        target="_blank">
+                                                                        Print Now
+                                                                    </a>
+
+
+                                                                    
 
                                                                 </div>
                                                             </div>

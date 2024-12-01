@@ -211,6 +211,8 @@
 
 
 
+
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -239,19 +241,17 @@
 
                                                         @if ($item->status == 'approved')
                                                             <a href="{{ route('pass-slip.view', $item->id) }}"
-                                                                class="btn btn-info btn-sm" target="_blank">Print
+                                                                class="btn btn-info btn-sm" target="_blank">Print View
                                                             </a>
                                                         @endif
-                                                        {{-- @if ($item->status == 'approved')
+                                                        @if ($item->status == 'approved')
                                                             <a href="{{ route('pass-slip.print', $item->id) }}"
-                                                                class="btn btn-info btn-sm" target="_blank">
-                                                                Print Now
-                                                            </a>
-                                                        @endif --}}
+                                                                class="btn btn-info btn-sm" target="_blank">Print
+                                                                Now</a>
+                                                        @endif
 
 
-
-{{-- Shit this is so preety --}}
+                                                        {{-- Shit this is so preety --}}
 
                                                     </td>
                                                 </tr>
@@ -408,8 +408,17 @@
                                                                                 @if ($item->status == 'approved')
                                                                                     <a href="{{ route('pass-slip.view', $item->id) }}"
                                                                                         class="btn btn-info btn-sm"
-                                                                                        target="_blank">Print</a>
+                                                                                        target="_blank">Print View</a>
                                                                                 @endif
+
+                                                                                @if ($slip->status == 'approved')
+                                                                                    <a href="{{ route('pass-slip.print', $slip->id) }}"
+                                                                                        class="btn btn-secondary btn-sm"
+                                                                                        target="_blank">
+                                                                                        Print Now
+                                                                                    </a>
+                                                                                @endif
+
 
 
 
@@ -435,6 +444,13 @@
                                                                     <a href="{{ route('pass-slip.view', $item->id) }}"
                                                                         class="btn btn-info btn-sm"
                                                                         target="_blank">Print</a>
+                                                                @endif
+                                                                @if ($slip->status == 'approved')
+                                                                    <a href="{{ route('pass-slip.print', $slip->id) }}"
+                                                                        class="btn btn-secondary btn-sm"
+                                                                        target="_blank">
+                                                                        Print Now
+                                                                    </a>
                                                                 @endif
                                                             @endif
                                                         </td>
