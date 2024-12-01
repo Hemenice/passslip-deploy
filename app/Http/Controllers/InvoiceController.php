@@ -29,18 +29,38 @@ class InvoiceController extends Controller
 
     public function printPassSlip($id)
     {
-        $slip = Slip::with('user')->findOrFail($id);
-        $scannedBarcodes = Barcode::all(); // Adjust this to your actual fetching logic
+        try {
+            $slip = Slip::with('user')->findOrFail($id);
+            $scannedBarcodes = Barcode::all(); // Adjust this to your actual fetching logic
 
-        // Generate the PDF
-        $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip', 'scannedBarcodes'));
+            // Generate the PDF
+            $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip', 'scannedBarcodes'));
 
-        // Force download with explicit headers for better compatibility
-        return response($pdf->output(), 200, [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'attachment; filename="print_view.pdf"',
-        ]);
+            // Attempt to download the PDF
+            return response($pdf->output(), 200, [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="print_view.pdf"',
+            ]);
+        } catch (\Exception $e) {
+            // Log the error for debugging purposes
+            \Log::error('PDF download failed: ' . $e->getMessage());
+
+            try {
+                // If download fails, stream the PDF
+                $slip = Slip::with('user')->findOrFail($id);
+                $pdf = FacadePdf::loadView('pass_slips.print_view', compact('slip', 'scannedBarcodes'));
+
+                return $pdf->stream('print_view.pdf');
+            } catch (\Exception $streamException) {
+                // Log the error for debugging purposes
+                \Log::error('PDF streaming also failed: ' . $streamException->getMessage());
+
+                // Return a fallback error message
+                return back()->withErrors('Unable to generate PDF. Please try again later.');
+            }
+        }
     }
+
 
     /**
 

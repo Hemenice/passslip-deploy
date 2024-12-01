@@ -83,9 +83,9 @@
 
 
                                             <!-- Display slips for the user themselves -->
-                                            {{-- @foreach ($slip as $index => $item) --}}
+                                            {{-- @foreach ($item as $index => $item) --}}
 
-                                            @foreach ($slip->reverse() as $item)
+                                            @foreach ($item->reverse() as $item)
                                                 <tr>
                                                     {{-- <th scope="row">{{ $index + 1 }}</th> --}}
                                                     <th scope="row">{{ $loop->iteration }}</th>
@@ -411,8 +411,8 @@
                                                                                         target="_blank">Print View</a>
                                                                                 @endif
 
-                                                                                @if ($slip->status == 'approved')
-                                                                                    <a href="{{ route('pass-slip.print', $slip->id) }}"
+                                                                                @if ($item->status == 'approved')
+                                                                                    <a href="{{ route('pass-slip.print', $item->id) }}"
                                                                                         class="btn btn-secondary btn-sm"
                                                                                         target="_blank">
                                                                                         Print Now
@@ -445,8 +445,9 @@
                                                                         class="btn btn-info btn-sm"
                                                                         target="_blank">Print</a>
                                                                 @endif
-                                                                @if ($slip->status == 'approved')
-                                                                    <a href="{{ route('pass-slip.print', $slip->id) }}"
+
+                                                                @if ($item->status == 'approved')
+                                                                    <a href="{{ route('pass-slip.print', $item->id) }}"
                                                                         class="btn btn-secondary btn-sm"
                                                                         target="_blank">
                                                                         Print Now
