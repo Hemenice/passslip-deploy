@@ -386,6 +386,23 @@
                                                                                     {{ \Carbon\Carbon::parse($item->date_arrival)->format('F j, Y') }}
                                                                                 </p>
 
+                                                                                @foreach ($item->barcodes as $barcode)
+                                                                                    <p>
+                                                                                        <strong>Actual Time of
+                                                                                            Departure:</strong>
+                                                                                        {{ $barcode->actual_time_departure
+                                                                                            ? \Carbon\Carbon::parse($barcode->actual_time_departure)->format('h:i A')
+                                                                                            : 'N/A' }}
+                                                                                    </p>
+                                                                                    <p>
+                                                                                        <strong>Actual Time of
+                                                                                            Arrival:</strong>
+                                                                                        {{ $barcode->actual_time_arrival
+                                                                                            ? \Carbon\Carbon::parse($barcode->actual_time_arrival)->format('h:i A')
+                                                                                            : 'N/A' }}
+                                                                                    </p>
+                                                                                @endforeach
+
                                                                                 <!-- Display Barcode if approved and exists -->
                                                                                 @if ($item->status === 'approved' && $item->barcode)
                                                                                     <p><strong>Barcode:</strong></p>
