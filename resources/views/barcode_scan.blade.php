@@ -95,43 +95,35 @@
 
     <main>
         @if (session('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show fixed-alert" role="alert">
                 {{ session('error') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
 
         @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show fixed-alert" role="alert">
                 {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
 
+        <style>
+            .fixed-alert {
+                position: fixed;
+                top: 20px;
+                /* Adjust based on your preference */
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1050;
+                /* Ensures alert is above other content */
+                width: auto;
+                max-width: 90%;
+                /* To ensure it doesn't stretch too much */
+                margin: 0;
+            }
+        </style>
 
-        <div>
-            <h1>Dashboard</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">TIPS:</li>
-                    <li class="breadcrumb-item active">"Please click the button above and use the barcode scanner to
-                        scan your barcode."</li>
-                </ol>
-            </nav>
-            @if (session('error'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-        </div>
 
 
 
@@ -141,11 +133,6 @@
                 <!-- Left side columns -->
                 <div class="col-lg-12">
                     <div class="row">
-
-
-
-
-
                         <!-- Recent Sales -->
                         <<div class="col-12">
                             <div class="card recent-sales overflow-auto">
@@ -166,77 +153,110 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Recent Barcode Scanned <span>| Today</span></h5>
 
-                                    <table class="table table-borderless datatable">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
+                                    <nav>
 
-                                                {{-- <th scope="col">Barcode</th> --}}
-                                                <!-- Column for barcode image -->
-                                                {{-- <th scope="col">Control Number: </th> --}}
-                                                <!-- Column for barcode image -->
-                                                <th scope="col">Name</th> <!-- Column for barcode image -->
-                                                <th scope="col">Designation</th> <!-- Column for barcode image -->
+                                        <h1 class="blink-text open-sans-regular"
+                                            style="font-size: 24px; color: #333; text-align: center; background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 2px solid #ccc; font-weight: bold;">
+                                            Please click the button above and use the barcode scanner to scan your
+                                            barcode.
+                                        </h1>
 
-                                                {{-- <th scope="col">Status</th>  --}}
-                                                <th scope="col">Intended Departure & Arrival</th>
-                                                <!-- Column for barcode image -->
-                                                <th scope="col">Actual Departure</th>
-                                                <th scope="col">Actual Arrival</th>
+                                        <style>
+                                            @keyframes blink {
 
-                                                <!-- Column for barcode image -->
-                                                <th scope="col">Purpose</th> <!-- Column for approved_by -->
-                                                <th scope="col">Approved by:</th> <!-- Column for approved_by -->
+                                                0%,
+                                                100% {
+                                                    opacity: 1;
+                                                    /* Fully visible */
+                                                }
 
+                                                50% {
+                                                    opacity: 0;
+                                                    /* Fully hidden */
+                                                }
+                                            }
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($scannedBarcodes->reverse() as $barcode)
+                                            /* Apply the animation */
+                                            .blink-text {
+                                                animation: blink 2s infinite;
+                                                /* Blink every 3 seconds */
+                                            }
+                                        </style>
+
+                                        <table class="table table-borderless datatable">
+                                            <thead>
                                                 <tr>
-                                                    <th scope="row">{{ $loop->iteration }}</th>
-                                                    <td>{{ $barcode->slip->user->name ?? 'N/A' }}</td>
-                                                    <td>{{ $barcode->slip->user->designation ?? 'N/A' }}</td>
+                                                    <th scope="col">#</th>
 
+                                                    {{-- <th scope="col">Barcode</th> --}}
+                                                    <!-- Column for barcode image -->
+                                                    {{-- <th scope="col">Control Number: </th> --}}
+                                                    <!-- Column for barcode image -->
+                                                    <th scope="col">Name</th> <!-- Column for barcode image -->
+                                                    <th scope="col">Designation</th>
+                                                    <!-- Column for barcode image -->
 
+                                                    {{-- <th scope="col">Status</th>  --}}
+                                                    <th scope="col">Intended Departure & Arrival</th>
+                                                    <!-- Column for barcode image -->
+                                                    <th scope="col">Actual Departure</th>
+                                                    <th scope="col">Actual Arrival</th>
 
-                                                    <td>
-                                                        {{ ($barcode->slip->time_departure
-                                                            ? \Carbon\Carbon::parse($barcode->slip->time_departure)->format('h:i A')
-                                                            : 'N/A') .
-                                                            ' | ' .
-                                                            ($barcode->slip->time_arrival ? \Carbon\Carbon::parse($barcode->slip->time_arrival)->format('h:i A') : 'N/A') }}
-                                                    </td>
-                                                    <td>{{ $barcode->actual_time_departure ? \Carbon\Carbon::parse($barcode->actual_time_departure)->format('h:i A') : 'N/A' }}
-                                                    </td>
-                                                    <td>{{ $barcode->actual_time_arrival ? \Carbon\Carbon::parse($barcode->actual_time_arrival)->format('h:i A') : 'N/A' }}
-                                                    </td>
-
-
-
-
-
-
-                                                    <td>
-                                                        <span
-                                                            class="badge {{ $barcode->slip->purpose === 'Personal' ? 'bg-success' : ($barcode->slip->purpose === 'Official' ? 'bg-warning' : 'bg-secondary') }}">
-                                                            {{ $barcode->slip->purpose ?? 'N/A' }}
-                                                        </span>
-                                                    </td>
-
-                                                    <td>
-
-                                                        <span class="badge bg-primary"><i class="bi bi-star me-1"></i>
-                                                            {{ $barcode->slip->approver->name ?? 'Admin' }}</span>
-
-
-                                                    </td>
+                                                    <!-- Column for barcode image -->
+                                                    <th scope="col">Purpose</th> <!-- Column for approved_by -->
+                                                    <th scope="col">Approved by:</th>
+                                                    <!-- Column for approved_by -->
 
 
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($scannedBarcodes->reverse() as $barcode)
+                                                    <tr>
+                                                        <th scope="row">{{ $loop->iteration }}</th>
+                                                        <td>{{ $barcode->slip->user->name ?? 'N/A' }}</td>
+                                                        <td>{{ $barcode->slip->user->designation ?? 'N/A' }}</td>
+
+
+
+                                                        <td>
+                                                            {{ ($barcode->slip->time_departure
+                                                                ? \Carbon\Carbon::parse($barcode->slip->time_departure)->format('h:i A')
+                                                                : 'N/A') .
+                                                                ' | ' .
+                                                                ($barcode->slip->time_arrival ? \Carbon\Carbon::parse($barcode->slip->time_arrival)->format('h:i A') : 'N/A') }}
+                                                        </td>
+                                                        <td>{{ $barcode->actual_time_departure ? \Carbon\Carbon::parse($barcode->actual_time_departure)->format('h:i A') : 'N/A' }}
+                                                        </td>
+                                                        <td>{{ $barcode->actual_time_arrival ? \Carbon\Carbon::parse($barcode->actual_time_arrival)->format('h:i A') : 'N/A' }}
+                                                        </td>
+
+
+
+
+
+
+                                                        <td>
+                                                            <span
+                                                                class="badge {{ $barcode->slip->purpose === 'Personal' ? 'bg-success' : ($barcode->slip->purpose === 'Official' ? 'bg-warning' : 'bg-secondary') }}">
+                                                                {{ $barcode->slip->purpose ?? 'N/A' }}
+                                                            </span>
+                                                        </td>
+
+                                                        <td>
+
+                                                            <span class="badge bg-primary"><i
+                                                                    class="bi bi-star me-1"></i>
+                                                                {{ $barcode->slip->approver->name ?? 'Admin' }}</span>
+
+
+                                                        </td>
+
+
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
 
                                 </div>
 
