@@ -4,22 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
     <title>Scan Barcode</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-
-    <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -27,25 +20,11 @@
     <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
-
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-
-
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Updated: Apr 20 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
-
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -74,8 +53,6 @@
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
         </div><!-- End Search Bar -->
-
-
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
@@ -88,11 +65,7 @@
 
             </ul>
         </nav><!-- End Icons Navigation -->
-
     </header><!-- End Header -->
-
-
-
     <main>
         @if (session('error'))
             <div class="alert alert-danger alert-dismissible fade show fixed-alert" role="alert">
@@ -107,7 +80,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-
         <style>
             .fixed-alert {
                 position: fixed;
@@ -123,20 +95,14 @@
                 margin: 0;
             }
         </style>
-
-
-
-
         <section class="section dashboard">
             <div class="row">
-
                 <!-- Left side columns -->
                 <div class="col-lg-12">
                     <div class="row">
                         <!-- Recent Sales -->
                         <<div class="col-12">
                             <div class="card recent-sales overflow-auto">
-
                                 <div class="filter">
                                     <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                             class="bi bi-three-dots"></i></a>
@@ -149,18 +115,14 @@
                                         <li><a class="dropdown-item" href="#">This Year</a></li>
                                     </ul>
                                 </div>
-
                                 <div class="card-body">
                                     <h5 class="card-title">Recent Barcode Scanned <span>| Today</span></h5>
-
                                     <nav>
-
                                         <h1 class="blink-text open-sans-regular"
                                             style="font-size: 24px; color: #333; text-align: center; background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 2px solid #ccc; font-weight: bold;">
                                             Please click the button above and use the barcode scanner to scan your
                                             barcode.
                                         </h1>
-
                                         <style>
                                             @keyframes blink {
 
@@ -187,27 +149,13 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-
-                                                    {{-- <th scope="col">Barcode</th> --}}
-                                                    <!-- Column for barcode image -->
-                                                    {{-- <th scope="col">Control Number: </th> --}}
-                                                    <!-- Column for barcode image -->
                                                     <th scope="col">Name</th> <!-- Column for barcode image -->
                                                     <th scope="col">Designation</th>
-                                                    <!-- Column for barcode image -->
-
-                                                    {{-- <th scope="col">Status</th>  --}}
                                                     <th scope="col">Intended Departure & Arrival</th>
-                                                    <!-- Column for barcode image -->
                                                     <th scope="col">Actual Departure</th>
                                                     <th scope="col">Actual Arrival</th>
-
-                                                    <!-- Column for barcode image -->
                                                     <th scope="col">Purpose</th> <!-- Column for approved_by -->
                                                     <th scope="col">Approved by:</th>
-                                                    <!-- Column for approved_by -->
-
-
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -216,9 +164,6 @@
                                                         <th scope="row">{{ $loop->iteration }}</th>
                                                         <td>{{ $barcode->slip->user->name ?? 'N/A' }}</td>
                                                         <td>{{ $barcode->slip->user->designation ?? 'N/A' }}</td>
-
-
-
                                                         <td>
                                                             {{ ($barcode->slip->time_departure
                                                                 ? \Carbon\Carbon::parse($barcode->slip->time_departure)->format('h:i A')
@@ -230,29 +175,17 @@
                                                         </td>
                                                         <td>{{ $barcode->actual_time_arrival ? \Carbon\Carbon::parse($barcode->actual_time_arrival)->format('h:i A') : 'N/A' }}
                                                         </td>
-
-
-
-
-
-
                                                         <td>
                                                             <span
                                                                 class="badge {{ $barcode->slip->purpose === 'Personal' ? 'bg-success' : ($barcode->slip->purpose === 'Official' ? 'bg-warning' : 'bg-secondary') }}">
                                                                 {{ $barcode->slip->purpose ?? 'N/A' }}
                                                             </span>
                                                         </td>
-
                                                         <td>
-
                                                             <span class="badge bg-primary"><i
                                                                     class="bi bi-star me-1"></i>
                                                                 {{ $barcode->slip->approver->name ?? 'Admin' }}</span>
-
-
                                                         </td>
-
-
                                                     </tr>
                                                 @endforeach
                                             </tbody>
