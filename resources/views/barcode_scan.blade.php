@@ -1,28 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Scan Barcode</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
+<x-guest.head />
 
 <body>
     <!-- ======= Header ======= -->
@@ -34,37 +12,25 @@
                 <span class="d-none d-lg-block" id="liveTime"></span> <!-- Element to display live time -->
             </a>
         </div><!-- End Logo -->
-        <div class="search-bar">
+        <div style="opacity: 0;" class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="/barcode/scan">
-                <!-- Update action URL -->
-                @csrf <!-- Include CSRF token for security -->
+                @csrf
                 <input type="text" id="barcodeInput" name="code"
-                    placeholder="Click here and scan actual time of departure   " title="Enter search keyword"
-                    autofocus>
+                    placeholder="Click here and scan actual time of departure" title="Enter search keyword">
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
-        </div><!-- End Search Bar -->
-        <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="/barcode/scan">
-                <!-- Update action URL -->
-                @csrf <!-- Include CSRF token for security -->
+        </div>
+
+        <div style="opacity: 0;" class="search-bar">
+            <form class="search-form d-flex align-items-center" method="POST" action="/barcode/scanarrival">
+                @csrf
                 <input type="text" id="barcodeInputarrival" name="code"
-                    placeholder="Click here and scan actual time of Arrival   " title="Enter search keyword" autofocus>
+                    placeholder="Click here and scan actual time of arrival" title="Enter search keyword">
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
-        </div><!-- End Search Bar -->
-        <nav class="header-nav ms-auto">
-            <ul class="d-flex align-items-center">
-
-                <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link nav-icon search-bar-toggle " href="#">
-                        <i class="bi bi-search"></i>
-                    </a>
-                </li><!-- End Search Icon-->
+        </div>
 
 
-            </ul>
-        </nav><!-- End Icons Navigation -->
     </header><!-- End Header -->
     <main>
         @if (session('error'))
@@ -118,11 +84,15 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Recent Barcode Scanned <span>| Today</span></h5>
                                     <nav>
-                                        <h1 class="blink-text open-sans-regular"
+                                        <h1 id="scanMessage" class="blink-text open-sans-regular"
                                             style="font-size: 24px; color: #333; text-align: center; background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 2px solid #ccc; font-weight: bold;">
-                                            Please click the button above and use the barcode scanner to scan your
-                                            barcode.
+                                            SCAN NOW!
                                         </h1>
+                                        <h2 id="countdownMessage"
+                                            style="font-size: 50px; color: #ff0000; text-align: center; margin-top: 10px;">
+                                            <span id="countdown">5</span>
+                                        </h2>
+
                                         <style>
                                             @keyframes blink {
 
@@ -211,6 +181,63 @@
 
     {{-- original script in case failed --}}
     <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const scanMessage = document.getElementById('scanMessage');
+            const barcodeInput = document.getElementById('barcodeInput');
+            const barcodeInputArrival = document.getElementById('barcodeInputarrival');
+            const countdownElement = document.getElementById('countdown');
+            const lastFocusedInput = localStorage.getItem('lastFocusedInput');
+            let countdown = 5; // Initial countdown value in seconds
+
+            // Function to update the message based on focus
+            // function updateMessage(focusedInputId) {
+            //     if (focusedInputId === 'barcodeInput') {
+            //         scanMessage.textContent = 'NOW SCAN ACTUAL TIME OF DEPARTURE';
+            //     } else if (focusedInputId === 'barcodeInputarrival') {
+            //         scanMessage.textContent = 'NOW SCAN ACTUAL TIME OF ARRIVAL';
+            //     }
+            // }
+
+            function updateMessage(focusedInputId) {
+                if (focusedInputId === 'barcodeInput') {
+                    scanMessage.textContent = ' SCAN DEPARTURE NOW!';
+                } else if (focusedInputId === 'barcodeInputarrival') {
+                    scanMessage.textContent = ' SCAN ARRIVAL NOW!';
+                }
+            }
+
+            // Determine which input to focus based on lastFocusedInput
+            if (lastFocusedInput === 'barcodeInput') {
+                barcodeInputArrival.focus();
+                updateMessage('barcodeInputarrival');
+                localStorage.setItem('lastFocusedInput', 'barcodeInputarrival');
+            } else {
+                barcodeInput.focus();
+                updateMessage('barcodeInput');
+                localStorage.setItem('lastFocusedInput', 'barcodeInput');
+            }
+
+            // Add event listeners to update message when inputs gain focus
+            barcodeInput.addEventListener('focus', () => {
+                updateMessage('barcodeInput');
+                localStorage.setItem('lastFocusedInput', 'barcodeInput');
+            });
+
+            barcodeInputArrival.addEventListener('focus', () => {
+                updateMessage('barcodeInputarrival');
+                localStorage.setItem('lastFocusedInput', 'barcodeInputarrival');
+            });
+
+            // Countdown logic for page reload
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown; // Update countdown display
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.reload(); // Reload the page when countdown ends
+                }
+            }, 1000); // 1 second intervals
+        });
         document.getElementById('barcodeInput').addEventListener('change', function(event) {
             const code = event.target.value;
 
@@ -227,10 +254,13 @@
                 .then(response => response.json())
                 .then(data => {
                     alert(data.message); // Show success or error message
-                    document.getElementById('barcodeInput').value = ''; // Clear input for next scan
+                    document.getElementById('barcoedeInput').value = ''; // Clear input
+                    document.getElementById('barcodeInputarrival')
+                        .focus(); // Switch focus back to departure input
                 })
                 .catch(error => console.error('Error:', error));
         });
+
         document.getElementById('barcodeInputarrival').addEventListener('change', function(event) {
             const code = event.target.value;
 
@@ -247,7 +277,8 @@
                 .then(response => response.json())
                 .then(data => {
                     alert(data.message); // Show success or error message
-                    document.getElementById('barcodeInput').value = ''; // Clear input for next scan
+                    document.getElementById('barcodeInputarrival').value = ''; // Clear input
+                    document.getElementById('barcodeInput').focus(); // Switch focus back to departure input
                 })
                 .catch(error => console.error('Error:', error));
         });
